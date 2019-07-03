@@ -7,6 +7,8 @@ case $- in
       *) return;;
 esac
 
+# :0 은 왜그런지 모르겠는데 버전이 최신이라 그런지 절대 안되고 계속 no display 뜨고..
+# sshd config에서 x11forward 부분 offset이 10부터 시작하고 xauth list로 봐도 :10 이길래 그렇게 해봤더니 되네
 export DISPLAY=:0
 export EDITOR=/usr/local/bin/vim
 # git editor를 vim으로 바꾸는 환경변수 차원의 방법이랍니다
@@ -113,6 +115,7 @@ alias la='ls -Ah'
 alias l='ls -CF'
 alias scn='screen -h 10000'
 alias lsb='lsb_release -a'
+alias dt='tmux detach -a'
 alias un='uname -a'
 alias mount-MacBook='sudo mount -t cifs //192.168.0.103/Downloads /home/odroid/media/MacBook -o user=utylee,pass=sksmsqnwk11,uid=1001,gid=1001,dir_mode=0777,file_mode=0777,iocharset=utf8,nounix,sec=ntlmssp'
 alias mount-seoruPC='sudo mount -t cifs //192.168.0.101/down /home/odroid/media/seoruPC -o user=seoru,pass=sksmsqnwk11,uid=1001,gid=1001,dir_mode=0777,file_mode=0777,iocharset=utf8'
@@ -144,15 +147,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-m() {
-#echo $2 | mutt -s "$1" utylee@gmail.com -a "$3"
-echo $2 | mutt -s "$1" utylee@gmail.com
+v() {
+	sh ~/v.sh $@
 }
 
-ma() {
-echo $2 | mutt -s "$1" utylee@gmail.com -a "$3"
-#echo $2 | mutt -s "$1" utylee@gmail.com
-}
 vi0() {
 	filename=$PWD/$1
 	tmux send-keys -t vBLOG.0 ":e $filename" C-m
@@ -166,10 +164,23 @@ vi1() {
 	tmux select-pane -t vMISC.0
 }
 
-echo -ne   '\eP\e]12;#2AA198\a'  # Cursor       -> red
+m() {
+#echo $2 | mutt -s "$1" utylee@gmail.com -a "$3"
+echo $2 | mutt -s "$1" utylee@gmail.com
+}
+
+ma() {
+echo $2 | mutt -s "$1" utylee@gmail.com -a "$3"
+#echo $2 | mutt -s "$1" utylee@gmail.com
+}
+
+# echo -ne   '\eP\e]12;#2AA198\a'  # Cursor       -> red
+echo -ne   '\eP\e]12;#5F5FAF\a'  # Cursor       -> purple
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/clang_7.0.1/lib:$LD_LIBRARY_PATH"
+#export PATH="$HOME/.cargo/bin:$PATH"
 eval "$(pyenv init -)"
 pyenv virtualenvwrapper_lazy
 
@@ -177,7 +188,24 @@ pyenv virtualenvwrapper_lazy
 #alias vi0='vim --servername blog --remote '
 
 alias t0='source ~/.tmuxset-blog'
+alias tr0='source ~/.tmuxset-rust'
 alias t1='source ~/.tmuxset-misc'
 alias t2='source ~/.tmuxset-flask'
 alias smi-sync='python ~/.virtualenvs/misc/src/smi-sync.py '
 #eval "$(pyenv virtualenv-init -)"
+
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# glob 옵션은 ignore에 none을 줘서 ignore없이선행하게 합니다 문자열이 아닌 파일찾기이기 때문입니다
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore'
+export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore'
+#export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob ""'
+#export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+#export FZF_DEFAULT_COMMAND='ag --hidden --path-to-ignore ~/.ignore -g ""'
+#alias ag='ag --path-to-ignore /home/odroid/.ignore'
+#export FZF_DEFAULT_COMMAND='ag --hidden --ignore={"*css","*min.css","*min.js"} -g ""'
+#export FZF_DEFAULT_COMMAND='ag --hidden --path-to-ignore ~/.ignore -g ""'
+#export FZF_DEFAULT_COMMAND='ag -l --path-to-ignore ~/.ignore --nocolor --hidden -g ""'
+
+#export FZF_DEFAULT_COMMAND='ag --ignore={"*json","*.min.css","*.min.js"}'
