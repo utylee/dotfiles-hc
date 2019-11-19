@@ -23,6 +23,8 @@
 		server unix:/tmp/wowinfo_7.sock fail_timeout=0;
 		server unix:/tmp/wowinfo_8.sock fail_timeout=0;
 
+		# nginx proxy <---> backend 간에도 핸드셰이크가 계속 생성 후 끊기는 부하를 줄이는 방법이라고 어떤
+		# 한국인이 그랬습니다
 		keepalive 100;
 		#server 127.0.0.1:8081 fail_timeout=0;
 		#server 127.0.0.1:8082 fail_timeout=0;
@@ -30,36 +32,17 @@
 		#server 127.0.0.1:8084 fail_timeout=0;
 	}
 
+# cache  control 을 해준다고 합니다.
+# pingdom에서의 웹페이지 테스트에서 권장해줬습니다. expires headers  nginx 을 검색하다보니
+# 참고:https://www.digitalocean.com/community/tutorials/how-to-implement-browser-caching-with-nginx-s-header-module-on-ubuntu-16-04
+# html을 항상 받고, css, js, 이미지는 최대로 캐싱하라는 것 같습니다
 # Expires map
 map $sent_http_content_type $expires {
     default                    off;
     text/html                  epoch;
-    text/css                   max;
-    application/javascript     max;
-    ~image/                    max;
-}
-
-server {
-	server_name utylee.dlinkddns.com;
-	#listen 443;
-
-	location / {
-		## First attempt to serve request as file, then
-		## as directory, then fall back to displaying a 404.
-		##try_files $uri $uri/ =404;
-		proxy_http_version 1.1;
-		proxy_set_header Upgrade $http_upgrade;
-		proxy_set_header Connection "upgrade";
-		proxy_set_header Host $http_host;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		#proxy_set_header Host $host;
-		#proxy_ssl_name $host;
-		proxy_redirect off;
-		proxy_buffering off;
-		proxy_read_timeout 1800;
-		#proxy_pass http://192.168.0.207; 
-		proxy_pass https://192.168.0.207:443; 
-	}
+    text/css                   30d;
+    application/javascript     30d;
+    ~image/                    30d;
 }
  
 server {
@@ -100,18 +83,19 @@ server {
 		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 		proxy_redirect off;
 		proxy_buffering off;
+		# websocket을 끊는 제한이 기본으로 60이라고 합니다. 넉넉하게 30분으로 늘려줬습니다
 		proxy_read_timeout 1800;
 		proxy_pass http://danawow;
-		#http2_push /static/css/fontawesome.all.min.css;
-		#http2_push /static/css/add.css;
-		#http2_push_preload on;
+
 	}
 	location /static {
 		# path for static files
+		# root 를 사용하려면 마지막 static 을 빼주지 않으면 중첩됩니다
 		alias /home/odroid/.virtualenvs/blog/src/aiohttp/wowinfo/static;
 		#root /home/pi/.virtualenvs/blog/src/aiohttp/wowinfo/;
 	}
  
+	# expires header , 브라우징 캐싱을 caching 위의 정의한 규칙대로 행하라는 명령
 	expires $expires;
 
 	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
@@ -140,12 +124,13 @@ server {
 
 	#ssl_ecdh_curve secp384r1; # see here and here (pg. 485)
 	#ssl_buffer_size 4k;
+	#압축설정도 별 영향이 없네요
 	#gzip on;
 	#gzip_types application/javascript image/* text/css;
 	#gunzip on;
+	#이미 적용되어 있나봅니다. 속도차이가 없음
 	#ssl_session_cache shared:SSL:1m; # holds approx 4000 sessions
 	#ssl_session_timeout 1h; # 1 hour during which sessions can be re-used.
-
 
 }
 
