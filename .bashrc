@@ -174,6 +174,10 @@ echo $2 | mutt -s "$1" utylee@gmail.com -a "$3"
 #echo $2 | mutt -s "$1" utylee@gmail.com
 }
 
+ra() {
+	 /home/odroid/.virtualenvs/misc/bin/python /home/odroid/.virtualenvs/misc/src/raider.py $1 $2 $3
+}
+
 # echo -ne   '\eP\e]12;#2AA198\a'  # Cursor       -> red
 echo -ne   '\eP\e]12;#5F5FAF\a'  # Cursor       -> purple
 
@@ -188,6 +192,7 @@ pyenv virtualenvwrapper_lazy
 #alias vi0='vim --servername blog --remote '
 
 alias t0='source ~/.tmuxset-blog'
+alias t00='source ~/.tmuxset-blogtest'
 alias tr0='source ~/.tmuxset-rust'
 alias t1='source ~/.tmuxset-misc'
 alias t2='source ~/.tmuxset-flask'
