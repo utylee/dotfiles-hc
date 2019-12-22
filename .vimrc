@@ -8,6 +8,7 @@ set iskeyword+=-
 " ctrlp가 ag를 사용하게 합니다
 "set grepprg=ag\ --nogroup\ --nocolor
 set grepprg=rg\ --color=never
+"set grepprg=rg\ --vimgrep
 " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_user_command = 'rg %s --files --color=never --no-ignore'
@@ -20,7 +21,13 @@ let g:simple_todo_map_normal_mode_keys = 0
 
 set rtp+=~/.fzf
 let g:fzf_history_dir = '~/.fzf/fzf-history'
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--hidden', <bang>0)
+"command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '-l', <bang>0)
+"command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '-l --path-to-ignore ~/.ignore --nocolor --hidden -g ""', <bang>0)
+"command! -bang -nargs=* Rg call fzf#vim#rg(<q-args>, '--files --hidden --follow --no-ignore', <bang>0)
+
+" fzf 에서 Ag 실행시 옵션과 파일명이 아닌 컨텐츠에서의 검색만을 하도록 하는
+" 옵션입니다
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, ' --path-to-ignore ~/.ignore', {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
@@ -195,10 +202,8 @@ syntax on
 "let g:completor_racer_binary = '/home/pi/.cargo/bin/racer'
 "let g:completor_clang_binary = '/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf/bin/clang'
 
+ 
 
-
-"let g:asyncomplete_smart_completion = 1
-"let g:asyncomplete_auto_popup = 1
 
 "for ncm2
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -455,17 +460,21 @@ nmap <leader>z :cd %:p:h<cr> :pwd<cr>
 " control. It also supports works with .svn, .hg, .bzr.
 "let g:ctrlp_working_path_mode = 'r'
 
+
+ 
+
 " Use a leader instead of the actual named binding
 "nmap <leader>f :CtrlPCurWD<cr>
 nmap <leader>v :Marks<cr>
-nmap <leader>a :Rg<cr>
+"nmap <leader>a :Rg<cr>
+nmap <leader>a :Ag<cr>
 nmap <leader>l :BLines<cr>
 nmap <leader>s :Tags<cr>
 nmap <leader>d :BTags<cr>
 nmap <leader>g :ProjectFiles<cr>
 nmap <leader>f :Files<cr>
 nmap <silent> <Leader>h :Rg <C-R><C-W><CR>
-nmap <leader>x :Ag<cr>
+nmap <leader>x :Rg<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>t :History<cr>		
 nmap <leader>m :CtrlPMixed<cr>
