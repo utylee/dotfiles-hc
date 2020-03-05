@@ -283,7 +283,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 "let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
 
 " Use deoplete.
-let g:python3_host_prog='/home/odroid/.pyenv/shims/python3'
+"let g:python3_host_prog='/home/odroid/.pyenv/shims/python3'
 
 "let g:deoplete#enable_at_startup = 0
 
@@ -408,7 +408,8 @@ set noshellslash
 "nmap <leader>e :!python3 '%:p'<CR>
 "nmap <leader>e :set shellcmdflag=-ic <CR> :!ts python '%'<CR> <CR> :set shellcmdflag=-c<CR>
 nmap <leader>e :!ts python '%:p' 2>/dev/null<CR> <CR>
-nmap <leader>w :!ts cargo build --release<CR> <CR>
+"nmap <leader>w :!ts cargo build --release<CR> <CR>
+nmap <leader>w :!ts cargo run -j6<CR> <CR>
 "nmap <leader>w :!ts rustc '%:t' 2>/dev/null<CR> <CR>
 "nmap <leader>e :!ts python '%' 2>/dev/null<CR> <CR>
 "현재 행을 실행하는 커맨드인데 공백제거가 안돼 아직 제대로 되지 않습니다
@@ -473,7 +474,7 @@ nmap <leader>s :Tags<cr>
 nmap <leader>d :BTags<cr>
 nmap <leader>g :ProjectFiles<cr>
 nmap <leader>f :Files<cr>
-nmap <silent> <Leader>h :Rg <C-R><C-W><CR>
+nmap <silent> <Leader>h :Ag <C-R><C-W><CR>
 nmap <leader>x :Rg<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>t :History<cr>		
