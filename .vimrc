@@ -471,10 +471,12 @@ nmap <leader>v :Marks<cr>
 nmap <leader>a :Ag<cr>
 nmap <leader>l :BLines<cr>
 nmap <leader>s :Tags<cr>
+"nmap <leader>d :Tags<cr>
 nmap <leader>d :BTags<cr>
 nmap <leader>g :ProjectFiles<cr>
 nmap <leader>f :Files<cr>
-nmap <silent> <Leader>h :Ag <C-R><C-W><CR>
+"nmap <silent> <Leader>h :Ag <C-R><C-W><CR>
+nmap <silent> <Leader>h :Tags <C-R><C-W><CR>
 nmap <leader>x :Rg<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>t :History<cr>		
