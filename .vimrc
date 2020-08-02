@@ -475,7 +475,7 @@ nmap <leader>s :Tags<cr>
 nmap <leader>d :BTags<cr>
 nmap <leader>g :ProjectFiles<cr>
 nmap <leader>f :Files<cr>
-"nmap <silent> <Leader>h :Ag <C-R><C-W><CR>
+nmap <silent> <Leader>j :Ag <C-R><C-W><CR>
 nmap <silent> <Leader>h :Tags <C-R><C-W><CR>
 nmap <leader>x :Rg<cr>
 nmap <leader>b :Buffers<cr>
@@ -520,6 +520,34 @@ let g:airline_theme='molokai'
 
 
 "let g:jedi#completions_command = "<C-N>"
+
+
+" Save current view settings on a per-window, per-buffer basis.
+function! AutoSaveWinView()
+    if !exists("w:SavedBufView")
+        let w:SavedBufView = {}
+    endif
+    let w:SavedBufView[bufnr("%")] = winsaveview()
+endfunction
+
+" Restore current view settings.
+function! AutoRestoreWinView()
+    let buf = bufnr("%")
+    if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
+        let v = winsaveview()
+        let atStartOfFile = v.lnum == 1 && v.col == 0
+        if atStartOfFile && !&diff
+            call winrestview(w:SavedBufView[buf])
+        endif
+        unlet w:SavedBufView[buf]
+    endif
+endfunction
+
+" When switching buffers, preserve window view.
+if v:version >= 700
+    autocmd BufLeave * call AutoSaveWinView()
+    autocmd BufEnter * call AutoRestoreWinView()
+endif
 
 "autocmd BufNewFile,BufRead *.qml so c:\vim\vim74\ftplugin\qml.vim
 autocmd BufNewFile,BufRead *.qml setf qml 
