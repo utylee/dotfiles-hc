@@ -1,4 +1,8 @@
-UUID=e139ce78-9841-40fe-8823-96a304a09859 / ext4 errors=remount-ro,noatime 0 1
-UUID=2a3ca927-d71a-4277-928a-764c7b1b07cf /home/odroid/media/3001 ext4 defaults 0 0
-UUID=e5aec494-c442-4a47-9b9b-d419f3a531d3 /home/odroid/media/3002 ext4 defaults 0 0
-LABEL=boot /media/boot vfat defaults 0 0
+#UUID=e139ce78-9841-40fe-8823-96a304a09859 / ext4 errors=remount-ro,noatime 0 1
+LABEL=boot /media/boot	vfat defaults 0 1
+/dev/sda1 /					ext4 defaults,noatime 0 1
+/dev/sda2 /media/datadrive	ext4 defaults 0 2
+//192.168.0.207/clark /home/odroid/media cifs username=utylee,password=sksmsqnwk11,iocharset=utf8,file_mode=0777,dir_mode=0777,uid=odroid,gid=odroid,noauto,x-systemd.automount 0 0
+
+
+
