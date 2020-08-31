@@ -183,6 +183,7 @@ echo -ne   '\eP\e]12;#5F5FAF\a'  # Cursor       -> purple
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
+#export LD_LIBRARY_PATH="/usr/local/lib:/usr/local/clang_7.0.1/lib:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH="/usr/local/clang_7.0.1/lib:$LD_LIBRARY_PATH"
 #export PATH="$HOME/.cargo/bin:$PATH"
 eval "$(pyenv init -)"
@@ -193,9 +194,9 @@ pyenv virtualenvwrapper_lazy
 
 alias t0='source ~/.tmuxset-blog'
 alias t00='source ~/.tmuxset-blogtest'
-alias tr0='source ~/.tmuxset-rust'
+alias tru='source ~/.tmuxset-rust'
 alias t1='source ~/.tmuxset-misc'
-alias t2='source ~/.tmuxset-flask'
+alias t2='source ~/.tmuxset-trader'
 alias smi-sync='python ~/.virtualenvs/misc/src/smi-sync.py '
 #eval "$(pyenv virtualenv-init -)"
 
