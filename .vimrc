@@ -19,6 +19,9 @@ let g:ctrlp_use_caching = 0
 
 let g:simple_todo_map_normal_mode_keys = 0
 
+nnoremap ,c :let @+ = expand("%:p").":".line('.')<cr>
+
+
 set rtp+=~/.fzf
 let g:fzf_history_dir = '~/.fzf/fzf-history'
 "command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '-l', <bang>0)
@@ -318,7 +321,8 @@ let g:airline#extensions#tagbar#flags = 'f'
 "let g:airline_section_b = ''
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_section_c = '%t'
+"디렉토리 없이 파일명만 표시하게 합니다
+"let g:airline_section_c = '%t'
 " tagbar 업데이트가 너무 느려서 확인해보니 기본 4000이었습니다
 set updatetime=1000
 au VimEnter * let g:airline_section_x = airline#section#create(['tagbar']) | :AirlineRefresh
@@ -453,6 +457,7 @@ let g:ctrlp_custom_ignore = {
 " 한마디전으로
 
 nmap <leader>z :cd %:p:h<cr> :pwd<cr>
+nmap <leader>Z :ProsessionDelete<cr>
 
 
 
@@ -469,7 +474,7 @@ nmap <leader>z :cd %:p:h<cr> :pwd<cr>
 nmap <leader>v :Marks<cr>
 "nmap <leader>a :Rg<cr>
 nmap <leader>a :Ag<cr>
-"nmap <leader>l :BLines<cr>
+nmap <leader>l :BLines<cr>
 nmap <leader>s :Tags<cr>
 "nmap <leader>d :Tags<cr>
 nmap <leader>d :BTags<cr>
@@ -478,7 +483,7 @@ nmap <leader>f :Files<cr>
 nmap <silent> <Leader>g :BTags <C-R><C-W><CR>
 nmap <silent> <Leader>h :Tags <C-R><C-W><CR>
 nmap <silent> <Leader>j :Ag <C-R><C-W><CR>
-nmap <silent> <Leader>l :BLines <C-R><C-W><CR>
+"nmap <silent> <Leader>l :BLines <C-R><C-W><CR>
 nmap <leader>x :Rg<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>t :History<cr>		
