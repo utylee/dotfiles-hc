@@ -75,7 +75,7 @@ fi
 #export TERM=xterm-256color-italic
 #color_prompt=yes
 
-alias ll='ls -lhF'
+alias ll='ls -alhF'
 set CLICOLOR=1
 parse_git_branch() {
    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -181,10 +181,16 @@ ra() {
 # echo -ne   '\eP\e]12;#2AA198\a'  # Cursor       -> red
 echo -ne   '\eP\e]12;#5F5FAF\a'  # Cursor       -> purple
 
+# blinking cursor
+echo -ne "\x1b[1 q"
+
+
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
-#export LD_LIBRARY_PATH="/usr/local/lib:/usr/local/clang_7.0.1/lib:$LD_LIBRARY_PATH"
-export LD_LIBRARY_PATH="/usr/local/clang_7.0.1/lib:$LD_LIBRARY_PATH"
+export CLANGHOME=/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf
+#export PATH="/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
+export PATH="$CLANGHOME/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
+#export LD_LIBRARY_PATH="/usr/local/clang_7.0.1/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$CLANGHOME/lib:$LD_LIBRARY_PATH"
 #export PATH="$HOME/.cargo/bin:$PATH"
 eval "$(pyenv init -)"
 pyenv virtualenvwrapper_lazy
@@ -201,18 +207,29 @@ alias smi-sync='python ~/.virtualenvs/misc/src/smi-sync.py '
 #eval "$(pyenv virtualenv-init -)"
 
 
+alias 4001='cd ~/media/4001/00-MediaWorld-4001'
+alias 4002='cd ~/media/4002/00-MediaWorld-4002'
+
+
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+#export FZF_DEFAULT_COMMAND='ag --hidden --path-to-ignore ~/.ignore -g ""'
+
 # glob 옵션은 ignore에 none을 줘서 ignore없이선행하게 합니다 문자열이 아닌 파일찾기이기 때문입니다
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore'
 #export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore'
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob ""'
 #export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
-#export FZF_DEFAULT_COMMAND='ag --hidden --path-to-ignore ~/.ignore -g ""'
 export FZF_DEFAULT_COMMAND='ag -l --path-to-ignore ~/.ignore --nocolor --hidden -g ""'
+
 #alias ag='ag --path-to-ignore /home/odroid/.ignore'
 #export FZF_DEFAULT_COMMAND='ag --hidden --ignore={"*css","*min.css","*min.js"} -g ""'
 #export FZF_DEFAULT_COMMAND='ag --hidden --path-to-ignore ~/.ignore -g ""'
 #export FZF_DEFAULT_COMMAND='ag -l --path-to-ignore ~/.ignore --nocolor --hidden -g ""'
 
 #export FZF_DEFAULT_COMMAND='ag --ignore={"*json","*.min.css","*.min.js"}'
+
+# *********************
+# ** DO NOT DO THIS! **
+# *********************
+#export FZF_DEFAULT_OPTS='--preview "cat --style=numbers --color=always --line-range :500 {}"'
