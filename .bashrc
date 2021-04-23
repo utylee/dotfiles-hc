@@ -216,11 +216,11 @@ alias 4002='cd ~/media/4002/00-MediaWorld-4002'
 #export FZF_DEFAULT_COMMAND='ag --hidden --path-to-ignore ~/.ignore -g ""'
 
 # glob 옵션은 ignore에 none을 줘서 ignore없이선행하게 합니다 문자열이 아닌 파일찾기이기 때문입니다
-#export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore'
+#export FZF_DEFAULT_COMMAND='ag -l --path-to-ignore ~/.ignore --nocolor --hidden -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore'
 #export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore'
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob ""'
 #export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
-export FZF_DEFAULT_COMMAND='ag -l --path-to-ignore ~/.ignore --nocolor --hidden -g ""'
 
 #alias ag='ag --path-to-ignore /home/odroid/.ignore'
 #export FZF_DEFAULT_COMMAND='ag --hidden --ignore={"*css","*min.css","*min.js"} -g ""'

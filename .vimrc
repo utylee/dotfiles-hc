@@ -24,6 +24,9 @@ nnoremap ,c :let @+ = expand("%:p").":".line('.')<cr>
 
 set rtp+=~/.fzf
 let g:fzf_history_dir = '~/.fzf/fzf-history'
+"let g:fzf_preview_window = []
+
+"let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
 "command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '-l', <bang>0)
 "command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '-l --path-to-ignore ~/.ignore --nocolor --hidden -g ""', <bang>0)
 "command! -bang -nargs=* Rg call fzf#vim#rg(<q-args>, '--files --hidden --follow --no-ignore', <bang>0)
@@ -205,14 +208,15 @@ syntax on
 "let g:completor_racer_binary = '/home/pi/.cargo/bin/racer'
 "let g:completor_clang_binary = '/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf/bin/clang'
 
+"let g:completor_complete_options = 'menuone,noselect'
  
 
 
 "for ncm2
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+"set completeopt=noinsert,menuone,noselect
 set nocompatible
-let g:ncm2_pyclang#library_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
+"let g:ncm2_pyclang#library_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
 "let g:ncm2_pyclang#library_path = '/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf/lib/libclang.so'
 "let g:ncm2_pyclang#library_path = '/usr/local/clang_7.0.1/lib/libclang.so.7'
 "let g:ncm2_pyclang#library_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
@@ -471,10 +475,11 @@ nmap <leader>Z :ProsessionDelete<cr>
 
 " Use a leader instead of the actual named binding
 "nmap <leader>f :CtrlPCurWD<cr>
-nmap <leader>v :Marks<cr>
-"nmap <leader>a :Rg<cr>
-nmap <leader>a :Ag<cr>
-nmap <leader>; :Lines<cr>
+"nmap <leader>v :Marks<cr>
+nmap <leader>a :Rg<cr>
+"nmap <leader>a :Ag<cr>
+nmap <leader>k :BLines<cr>
+nmap <leader>l :Lines<cr>
 nmap <leader>s :Tags<cr>
 "nmap <leader>d :Tags<cr>
 nmap <leader>d :BTags<cr>
@@ -483,14 +488,14 @@ nmap <leader>f :Files<cr>
 nmap <silent> <Leader>g :BTags <C-R><C-W><CR>
 nmap <silent> <Leader>h :Tags <C-R><C-W><CR>
 nmap <silent> <Leader>j :Ag <C-R><C-W><CR>
-nmap <silent> <Leader>l :Lines <C-R><C-W><CR>
+nmap <silent> <Leader>; :Lines <C-R><C-W><CR>
 nmap <leader>x :Rg<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>t :History<cr>		
 nmap <leader>m :CtrlPMixed<cr>
 "nmap <leader>d :CtrlPBufTagAll<cr>
 "nmap <leader>a :CtrlPTag<cr>
-"nmap <leader>b :CtrlPBuffer<cr>
+nmap <leader>v :CtrlPBuffer<cr>
 "nmap <leader>t :CtrlPMRU<cr>
 
 " Easy bindings for its various modes
