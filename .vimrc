@@ -391,6 +391,7 @@ set ignorecase
 set shiftwidth=4
 set softtabstop=4
 set nobackup
+set nowritebackup
 set noswapfile
 "no equalalways or equalalways --> split 화면에서 사이즈 유즈 관련 세팅
 set noea 
@@ -487,9 +488,9 @@ nmap <leader>d :BTags<cr>
 nmap <leader>f :Files<cr>
 nmap <silent> <Leader>g :BTags <C-R><C-W><CR>
 nmap <silent> <Leader>h :Tags <C-R><C-W><CR>
-nmap <silent> <Leader>j :Ag <C-R><C-W><CR>
+nmap <silent> <Leader>j :Rg <C-R><C-W><CR>
 nmap <silent> <Leader>; :Lines <C-R><C-W><CR>
-nmap <leader>x :Rg<cr>
+nmap <leader>x :Ag<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>t :History<cr>		
 nmap <leader>m :CtrlPMixed<cr>
