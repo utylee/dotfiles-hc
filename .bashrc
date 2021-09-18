@@ -180,14 +180,16 @@ ra() {
 }
 
 # echo -ne   '\eP\e]12;#2AA198\a'  # Cursor       -> red
-echo -ne   '\eP\e]12;#5F5FAF\a'  # Cursor       -> purple
+#echo -ne   '\eP\e]12;#5F5FAF\a'  # Cursor       -> purple
+echo -ne   '\eP\e]12;#6D207A\a'  # Cursor       -> purple
 
 # blinking cursor
 echo -ne "\x1b[1 q"
 
 
 export PYENV_ROOT="$HOME/.pyenv"
-export CLANGHOME=/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf
+#export CLANGHOME=/usr/local/clang+llvm-9.0.1-armv7a-linux-gnueabihf
+export CLANGHOME=/usr/local/clang+llvm-11.1.0-armv7a-linux-gnueabihf
 #export PATH="/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
 export PATH="$CLANGHOME/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
 #export LD_LIBRARY_PATH="/usr/local/clang_7.0.1/lib:$LD_LIBRARY_PATH"
@@ -220,7 +222,6 @@ alias 4002='cd ~/media/4002/00-MediaWorld-4002'
 #export FZF_DEFAULT_COMMAND='ag -l --path-to-ignore ~/.ignore --nocolor --hidden -g ""'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore'
 export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore'
-#export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore'
 #export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob ""'
 #export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 
@@ -235,3 +236,8 @@ export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore'
 # ** DO NOT DO THIS! **
 # *********************
 #export FZF_DEFAULT_OPTS='--preview "cat --style=numbers --color=always --line-range :500 {}"'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source "$HOME/.cargo/env"
