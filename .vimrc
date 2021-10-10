@@ -24,7 +24,8 @@ nnoremap ,c :let @+ = expand("%:p").":".line('.')<cr>
 
 set rtp+=~/.fzf
 let g:fzf_history_dir = '~/.fzf/fzf-history'
-"let g:fzf_preview_window = []
+let g:fzf_layout = { 'down': '40%' }
+let g:fzf_preview_window = []
 
 "let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
 "command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '-l', <bang>0)
@@ -391,7 +392,6 @@ set ignorecase
 set shiftwidth=4
 set softtabstop=4
 set nobackup
-set nowritebackup
 set noswapfile
 "no equalalways or equalalways --> split 화면에서 사이즈 유즈 관련 세팅
 set noea 
@@ -490,7 +490,7 @@ nmap <silent> <Leader>g :BTags <C-R><C-W><CR>
 nmap <silent> <Leader>h :Tags <C-R><C-W><CR>
 nmap <silent> <Leader>j :Rg <C-R><C-W><CR>
 nmap <silent> <Leader>; :Lines <C-R><C-W><CR>
-nmap <leader>x :Ag<cr>
+nmap <leader>x :Rg<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>t :History<cr>		
 nmap <leader>m :CtrlPMixed<cr>
