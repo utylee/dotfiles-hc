@@ -1,0 +1,6 @@
+UUID=e139ce78-9841-40fe-8823-96a304a09859 / ext4 errors=remount-ro,noatime 0 1
+LABEL=boot /media/boot vfat defaults 0 1
+
+//192.168.0.201/clark /home/odroid/media cifs username=utylee,password=sksmsqnwk11,iocharset=utf8,file_mode=0777,dir_mode=0777,uid=odroid,gid=odroid,noauto,x-systemd.automount 0 0
+
+
