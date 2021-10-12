@@ -9,7 +9,9 @@ esac
 
 # :0 은 왜그런지 모르겠는데 버전이 최신이라 그런지 절대 안되고 계속 no display 뜨고..
 # sshd config에서 x11forward 부분 offset이 10부터 시작하고 xauth list로 봐도 :10 이길래 그렇게 해봤더니 되네
-export DISPLAY=:0
+#export DISPLAY=:0
+#아래로 수정하니 invalid mit magic cookie 1 메세지가 사라졌습니다
+export DISPLAY=:1.0
 export EDITOR=/usr/local/bin/vim
 # git editor를 vim으로 바꾸는 환경변수 차원의 방법이랍니다
 export GIT_EDITOR=vim
@@ -186,15 +188,14 @@ echo -ne   '\eP\e]12;#5F5FAF\a'  # Cursor       -> purple
 echo -ne "\x1b[1 q"
 
 
-export PYENV_ROOT="$HOME/.pyenv"
-export CLANGHOME=/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf
+#export PYENV_ROOT="$HOME/.pyenv"
+export CLANGHOME=/usr/local/clang+llvm-12.0.1-armv7a-linux-gnueabihf
 #export PATH="/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
-export PATH="$CLANGHOME/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
+#export PATH="$CLANGHOME/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
+export PATH="$CLANGHOME/bin:$HOME/.cargo/bin:$PATH"
 #export LD_LIBRARY_PATH="/usr/local/clang_7.0.1/lib:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH="$CLANGHOME/lib:$LD_LIBRARY_PATH"
 #export PATH="$HOME/.cargo/bin:$PATH"
-eval "$(pyenv init -)"
-pyenv virtualenvwrapper_lazy
 
 #alias vi1='vim --servername misc --remote '
 #alias vi0='vim --servername blog --remote '
@@ -235,3 +236,17 @@ export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore'
 # ** DO NOT DO THIS! **
 # *********************
 #export FZF_DEFAULT_OPTS='--preview "cat --style=numbers --color=always --line-range :500 {}"'
+
+#eval "$(pyenv init --path)"
+#pyenv virtualenvwrapper_lazy
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+#export PATH="$PYENV_ROOT/shims:$PATH"
+
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export WORKON_HOME=$HOME/.virtualenvs
+
+eval "$(pyenv init -)"
+pyenv virtualenvwrapper_lazy
+. "$HOME/.cargo/env"
