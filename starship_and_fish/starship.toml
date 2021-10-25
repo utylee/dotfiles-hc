@@ -10,7 +10,7 @@ add_newline = false
 
 format = """
 $python\
-[W2](bold fg:#e034a1)\
+[HC2](bold fg:#6d207a)\
 $username\
 $git_branch$git_commit\
 $directory\
@@ -32,8 +32,8 @@ $character\
 #min_time = 50
 
 [character]
-success_symbol = "[❯](bold #e034a1)"
-vicmd_symbol = "[❮](bold #e034a1)"
+success_symbol = "[❯](bold #6d207a)"
+vicmd_symbol = "[❮](bold #6d207a)"
 
 [line_break]
 disabled = true 

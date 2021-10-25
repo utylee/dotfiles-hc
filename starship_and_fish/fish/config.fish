@@ -17,6 +17,8 @@ set -x PATH $PATH /usr/local/node-v14.18.1-linux-armv7l/bin
 set -gx CC $CLANGHOME/bin/clang
 set -gx CXX $CLANGHOME/bin/clang++
 set -gx LD_LIBRARY_PATH $LD_LIBRARY_PATH $CLANGHOME/lib 
+set -x LC_ALL en_US.UTF-8
+set -x LANGUAGE en_US.UTF-8
 
 # FZF
 set -gx FZF_DEFAULT_COMMAND 'fd --type file --color=always --follow --hidden --exclude .git'
