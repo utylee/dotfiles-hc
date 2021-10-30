@@ -7,7 +7,6 @@ if status is-interactive
 end
 if status is-login
     # Commands to run in interactive sessions can go here
-	fix_wsl2_interop
 	eval (dircolors -c ~/.dircolors)
 end
 
