@@ -1,11 +1,16 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
 	# CURSOR
 	echo -ne '\eP\e]12;#6d207a\a'	# HC2
+	set fish_greeting ''
+	fish_vi_key_bindings
+	starship init fish | source
+end
+if status is-login
+    # Commands to run in interactive sessions can go here
+	fix_wsl2_interop
+	eval (dircolors -c ~/.dircolors)
 end
 
-set fish_greeting ''
-fish_vi_key_bindings
 set -Ux fish_term24bit 1
 
 set -gx EDITOR /usr/bin/vi
@@ -14,14 +19,14 @@ set -gx GHQ_ROOT /home/odroid/.ghq
 # PATH
 set CLANGHOME /usr/local/clang+llvm-12.0.1-armv7a-linux-gnueabihf
 set -x PATH $CLANGHOME/bin $PATH
-set -x PATH $HOME/.go/bin /usr/local/go1.17.2/bin /usr/local/node-v14.18.1-linux-x64/bin /mnt/c/Windows/System32/WindowsPowrShell/v1.0/ /mnt/c/Python310/ /mnt/c/Python310/Scripts $PATH
+set -x PATH $HOME/.go/bin /usr/local/go1.17.2/bin /usr/local/node-v14.18.1-linux-armv7l/bin $PATH
 set -gx CC $CLANGHOME/bin/clang
 set -gx CXX $CLANGHOME/bin/clang++
 set -gx LD_LIBRARY_PATH $LD_LIBRARY_PATH $CLANGHOME/lib 
 
 # FZF
 # fzf을 직접입력해 파일명 탐색 명내용 
-set -gx FZF_DEFAULT_COMMAND 'fd --type file --color=always --hidden --follow --exclude .git --exclude media'
+set -gx FZF_DEFAULT_COMMAND 'fd --type file --color=always --follow --hidden --exclude .git'
 set -gx FZF_DEFAULT_OPTS "--ansi"
 #
 #set -gx FZF_CTRL_T_COMMAND "fd --type d --hidden --color=always"
@@ -40,9 +45,5 @@ set -gx FZF_CTRL_R_OPTS "--reverse --height 50%"
 #
 # VENV
 set -gx WORKON_HOME $HOME/.virtualenvs
-eval (dircolors -c ~/.dircolors)
-
 
 #source ~/.mintty-colors-solarized/mintty-solarized-dark.sh
-
-starship init fish | source
