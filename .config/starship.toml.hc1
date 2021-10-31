@@ -17,14 +17,14 @@ add_newline = false
 
 format = """
 $python\
-[W2](bold fg:#e034a1)\
+[HC1](bold fg:61)\
 $username\
 $directory\
 $git_branch$git_commit\
 $character\
 """
 [character]
-success_symbol = "[❯](bold #e034a1)"
+success_symbol = "[❯](bold 61)"
 #error_symbol = "[✗](fg:1)"
 error_symbol = "[❯](fg:1)"
 vicmd_symbol = "[N](fg:14 bold)"
