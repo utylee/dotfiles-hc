@@ -21,7 +21,7 @@ set -x PATH $CLANGHOME/bin $PATH
 set -x PATH $HOME/.go/bin /usr/local/go1.17.2/bin /usr/local/node-v14.18.1-linux-armv7l/bin $PATH
 set -gx CC $CLANGHOME/bin/clang
 set -gx CXX $CLANGHOME/bin/clang++
-set -gx LD_LIBRARY_PATH $LD_LIBRARY_PATH $CLANGHOME/lib 
+set -gx LD_LIBRARY_PATH $CLANGHOME/lib $LD_LIBRARY_PATH 
 
 # FZF
 # fzf을 직접입력해 파일명 탐색 명내용 
