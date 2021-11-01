@@ -1,15 +1,30 @@
 add_newline = false
 
+#format = """
+#$python\
+#[W1](bold fg:#207dab)\
+#$username\
+#$directory\
+#$git_branch$git_commit\
+#$character\
+#"""
+#[character]
+#success_symbol = "[❯](bold #207dab)"
+##error_symbol = "[✗](fg:1)"
+#error_symbol = "[❯](fg:1)"
+#vicmd_symbol = "[N](fg:14 bold)"
+##vicmd_symbol = "[❮](bold #207dab)"
+
 format = """
 $python\
-[W1](bold fg:#207dab)\
+[HC2](bold fg:#6d207a)\
 $username\
 $directory\
 $git_branch$git_commit\
 $character\
 """
 [character]
-success_symbol = "[❯](bold #207dab)"
+success_symbol = "[❯](bold #6d207a)"
 #error_symbol = "[✗](fg:1)"
 error_symbol = "[❯](fg:1)"
 vicmd_symbol = "[N](fg:14 bold)"
