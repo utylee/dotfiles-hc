@@ -15,7 +15,9 @@ chsh -s /usr/local/bin/fish
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
 * install fisher pyenv plugin
-fisher install daenney/pyenv
+fisher install utylee/pyenv 
+	: 기존 pyenv가 scp 나 ssh-copy-id 등에서 문제를 일으켜서 코드를 직접 추가해줬습니다.
+ #fisher install daenney/pyenv
 
 * install z plugin
 fisher install jethrokuan/z
