@@ -3,7 +3,17 @@ set nocompatible
 "source $VIMRUNTIME/mswin.vim
 "behave mswin
 
+if &shell =~# 'fish$'
+	set shell=sh
+endif
 set iskeyword+=-
+"
+" esc 누를시 딜레이를 없애줍니다
+" 참고사이트 : https://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=1000 ttimeoutlen=10
+
+" tagbar 업데이트가 너무 느려서 확인해보니 기본 4000이었습니다
+set updatetime=1000
 
 " ctrlp가 ag를 사용하게 합니다
 "set grepprg=ag\ --nogroup\ --nocolor
@@ -11,9 +21,9 @@ set grepprg=rg\ --color=never
 "set grepprg=rg\ --vimgrep
 " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_user_command = 'rg %s --files --color=never --no-ignore'
+"let g:ctrlp_user_command = 'rg %s --files --color=never --no-ignore'
 " " ag is fast enough that CtrlP doesn't need to cache
-let g:ctrlp_use_caching = 0
+"let g:ctrlp_use_caching = 0
 "if executable('ag')
 "endif
 
@@ -56,6 +66,7 @@ let g:terminal_ansi_colors = [
 
 " fzf 에서 Ag 실행시 옵션과 파일명이 아닌 컨텐츠에서의 검색만을 하도록 하는
 " 옵션입니다
+
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, ' --path-to-ignore ~/.ignore', {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 function! s:find_git_root()
@@ -78,9 +89,6 @@ command! ProjectFiles execute 'Files' s:find_git_root()
 "set term=screen-256color
 set backspace=indent,eol,start
 
-" esc 누를시 딜레이를 없애줍니다
-" 참고사이트 : https://www.johnhawthorn.com/2012/09/vi-escape-delays/
-set timeoutlen=1000 ttimeoutlen=10
 
 ""기본 자동완성 기능
 ""http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
@@ -325,12 +333,86 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 "endif
 "autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-
 "let g:virtualenv_directory = '/home/utylee/00-Projects/venv-tyTrader'
+
+
+function! StatusLine(current, width)
+  let l:s = ''
+
+  if a:current
+    let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+  else
+    let l:s .= '%#CrystallineInactive#'
+  endif
+  let l:s .= ' %f%h%w%m%r '
+  if a:current
+    let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+  endif
+
+  let l:s .= '%='
+  if a:current
+    let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
+    let l:s .= crystalline#left_mode_sep('')
+  endif
+  if a:width > 80
+    let l:s .= ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
+  else
+    let l:s .= ' '
+  endif
+
+  return l:s
+endfunction
+
+function! TabLine()
+  let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
+  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+endfunction
+
+let g:crystalline_enable_sep = 1
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_tabline_fn = 'TabLine'
+"let g:crystalline_theme = 'default'
+"let g:crystalline_theme = 'molokai'
+let g:crystalline_theme = 'onedark'
+
+set showtabline=2
+set guioptions-=e
 set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#virtualenv#enabled = 0
-let g:airline#extensions#tagbar#flags = 'f'
+
+"set laststatus=2
+"
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#virtualenv#enabled = 0
+""let g:airline#extensions#tagbar#flags = 'f'
+""let g:airline#extensions#hunks#enabled = 0
+""let g:airline#extensions#whitespace#enabled = 0
+""let g:airline_section_warning=''
+""let g:airline_section_error=''
+""let g:airline_section_statistics=''
+""let g:airline_mode_map = {
+""  \ '__' : '-',
+""  \ 'n'  : 'N',
+""  \ 'i'  : 'I',
+"  \ 'R'  : 'R',
+"  \ 'v'  : 'V',
+"  \ 'V'  : 'V-L',
+"  \ 'c'  : 'C',
+"  \ 's'  : 'S',
+"\ 'S' : 'S-L',
+"\ }
+"au VimEnter * let g:airline_section_x = airline#section#create(['tagbar']) | :AirlineRefresh
+" Enable the list of buffers
+"let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+"let g:airline#extensions#tabline#fnamemod = ':t'
+
+"set air-line theme {dark, molokai, ...}
+"let g:airline_theme='molokai'
+""let g:airline_theme='solarized'
+""let g:airline_theme='dark'
+""let g:airline_theme='tomorrow'
+""let g:airline_theme='jellybeans'
 
 "let g:airline_section_a = airline#sections#create(['mode', %{airline#extensions#branch#get_head()}''branch'])
 
@@ -346,13 +428,8 @@ let g:airline#extensions#tagbar#flags = 'f'
 "let g:airline_section_b = airline#section#create(['%{virtualenv#statusline()}'])
 "let g:airline_section_b = airline#section#create(['%f'])
 "let g:airline_section_b = ''
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#whitespace#enabled = 0
 "디렉토리 없이 파일명만 표시하게 합니다
 "let g:airline_section_c = '%t'
-" tagbar 업데이트가 너무 느려서 확인해보니 기본 4000이었습니다
-set updatetime=1000
-au VimEnter * let g:airline_section_x = airline#section#create(['tagbar']) | :AirlineRefresh
 
 "au VimEnter * let g:airline_section_x = airline#section#create_right(['tagbar']) | :AirlineRefresh
 "let g:airline_section_x = airline#section#create_right(['tagbar']) 
@@ -360,20 +437,6 @@ au VimEnter * let g:airline_section_x = airline#section#create(['tagbar']) | :Ai
 "let g:airline_skip_empty_sections = 1
 "let g:airline_section_y=''
 "let g:airline_section_z=''
-let g:airline_section_warning=''
-let g:airline_section_error=''
-let g:airline_section_statistics=''
-let g:airline_mode_map = {
-  \ '__' : '-',
-  \ 'n'  : 'N',
-  \ 'i'  : 'I',
-  \ 'R'  : 'R',
-  \ 'v'  : 'V',
-  \ 'V'  : 'V-L',
-  \ 'c'  : 'C',
-  \ 's'  : 'S',
-\ 'S' : 'S-L',
-\ }
 
 "let g:airline_section_a = airline#section#create(['mode', '%{AirlineWrapper()}'])
 "let g:airline_section_b = airline#section#create([g:airline_symbols.branch, ' ', '%{fugitive#head()}', ' ', ' %{virtualenv#statusline()}'])
@@ -383,11 +446,6 @@ let g:airline_mode_map = {
 "let g:virtualenv_stl_format = '[%n]'
 "let g:Powerline_symbols = 'fancy'
 
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
 
 "function! MyOverride(...)
 "	call a:l.add_section('StatusLine', 'all')
@@ -475,10 +533,10 @@ map <A-4> :tabprevious<CR>
 "\ }
 
 " Setup some default ignores
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg|avi|mkv|mov|mp4|wma|xlsx|mp3|ini|doc|docx|un|bak)$',
-\}
+"let g:ctrlp_custom_ignore = {
+  "\ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  "\ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg|avi|mkv|mov|mp4|wma|xlsx|mp3|ini|doc|docx|un|bak)$',
+"\}
 
 " 현재파일의 디렉토리로 변경 %->  상대경로파일명, :p-> 절대경로파일명, :h->
 " 한마디전으로
@@ -515,17 +573,17 @@ nmap <silent> <Leader>; :Lines <C-R><C-W><CR>
 nmap <leader>x :Rg<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>t :History<cr>		
-nmap <leader>m :CtrlPMixed<cr>
+"nmap <leader>m :CtrlPMixed<cr>
 "nmap <leader>d :CtrlPBufTagAll<cr>
 "nmap <leader>a :CtrlPTag<cr>
-nmap <leader>v :CtrlPBuffer<cr>
+"nmap <leader>v :CtrlPBuffer<cr>
 "nmap <leader>t :CtrlPMRU<cr>
 
 " Easy bindings for its various modes
 "파일열기를 fzf를 사용해서 이것도 맞춰줘야합니다
 "nmap <leader>bs :CtrlPMRU<cr>
-let g:ctrlp_match_window = 'max:12'
-let g:ctrlp_extensions = ['tag']
+"let g:ctrlp_match_window = 'max:12'
+"let g:ctrlp_extensions = ['tag']
 
 " Split size change
 nmap <leader>- :resize -5<cr>
@@ -546,12 +604,6 @@ colorscheme solarized_sd_utylee
 "let python_no_builtin_highlight = 1  
 "let g:molokai_original = 1
 
-"set air-line theme {dark, molokai, ...}
-let g:airline_theme='molokai'
-"let g:airline_theme='solarized'
-"let g:airline_theme='dark'
-"let g:airline_theme='tomorrow'
-"let g:airline_theme='jellybeans'
 
 
 "let g:jedi#completions_command = "<C-N>"
