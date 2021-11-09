@@ -1,6 +1,7 @@
 if status is-interactive
 	# CURSOR
-	echo -ne '\eP\e]12;#6d207a\a'	# HC2
+	echo -ne '\eP\e]12;#5F5FAF\a'	# HC1
+	#echo -ne '\eP\e]12;#6d207a\a'	# HC2
 	set fish_greeting ''
 	fish_vi_key_bindings
 	starship init fish | source
