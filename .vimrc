@@ -558,7 +558,6 @@ nmap <leader>Z :ProsessionDelete<cr>
 "nmap <leader>f :CtrlPCurWD<cr>
 "nmap <leader>v :Marks<cr>
 nmap <leader>a :Rg<cr>
-"nmap <leader>a :Ag<cr>
 nmap <leader>k :BLines<cr>
 nmap <leader>l :Lines<cr>
 nmap <leader>s :Tags<cr>
@@ -566,11 +565,16 @@ nmap <leader>s :Tags<cr>
 nmap <leader>d :BTags<cr>
 "nmap <leader>g :ProjectFiles<cr>
 nmap <leader>f :Files<cr>
-nmap <silent> <Leader>g :BTags <C-R><C-W><CR>
-nmap <silent> <Leader>h :Tags <C-R><C-W><CR>
-nmap <silent> <Leader>j :Rg <C-R><C-W><CR>
-nmap <silent> <Leader>; :Lines <C-R><C-W><CR>
-nmap <leader>x :Rg<cr>
+nmap <silent> <leader>ud :BTags <C-R><C-W><CR>
+nmap <silent> <Leader>us :Tags <C-R><C-W><CR>
+nmap <silent> <Leader>ua :Rg <C-R><C-W><CR>
+nmap <silent> <Leader>ul :Lines <C-R><C-W><CR>
+"nmap <silent> <Leader>g :BTags <C-R><C-W><CR>
+"nmap <silent> <Leader>h :Tags <C-R><C-W><CR>
+"nmap <silent> <Leader>j :Rg <C-R><C-W><CR>
+"nmap <silent> <Leader>; :Lines <C-R><C-W><CR>
+"
+nmap <leader>x :Ag<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>t :History<cr>		
 "nmap <leader>m :CtrlPMixed<cr>
