@@ -506,15 +506,17 @@ nmap <leader>r :Rooter<CR>
 let g:rooter_manual_only = 1
 "nmap <leader>w :exec '!ts python -c \"'getline('.')'\"'<CR>
 nmap <leader>` :set fullscreen<CR>
-nmap <leader>q :bd!<CR>
-nmap <leader>Q :cclose<CR>
+
+nmap <leader>qq :bd!<CR>
+nmap <leader>qa :%bd!<CR>
+nmap <leader>qc :cclose<CR>
+
 nmap <leader>c :!ts C-c<CR> <CR>
-map <F7> :NERDTreeTabsToggle<CR>
-map <F2> :NERDTreeToggle<CR>
-nmap <leader>2 :NERDTreeToggle<CR>
-"map <F1> :e $MYVIMRC<CR>
+"map <F7> :NERDTreeTabsToggle<CR>
+"map <F2> :NERDTreeToggle<CR>
+"nmap <leader>2 :NERDTreeToggle<CR>
 nmap <leader>1 :e $MYVIMRC<CR>
-nmap <leader>3 :GitGutterToggle<CR>
+"nmap <leader>3 :GitGutterToggle<CR>
 nmap <leader>5 :syntax sync fromstart<CR>
 map <A-3> :tabnext<CR>
 map <A-4> :tabprevious<CR>
@@ -576,6 +578,9 @@ nmap <leader>gd :Gdiffsplit<cr>
 nmap <leader>gb :Git blame<cr>
 nmap <leader>gw :Gwrite<cr>
 nmap <leader>gr :Gread<cr>
+"from fzf
+nmap <leader>gc :BCommits<cr>	
+nmap <leader>gx :Commits<cr>	
 
 "nmap <silent> <Leader>g :BTags <C-R><C-W><CR>
 "nmap <silent> <Leader>h :Tags <C-R><C-W><CR>
