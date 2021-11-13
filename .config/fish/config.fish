@@ -1,7 +1,6 @@
 if status is-interactive
 	# CURSOR
-	echo -ne '\eP\e]12;#5F5FAF\a'	# HC1
-	#echo -ne '\eP\e]12;#6d207a\a'	# HC2
+	echo -ne '\eP\e]12;#6d207a\a'	# HC2
 	set fish_greeting ''
 	fish_vi_key_bindings
 	starship init fish | source
@@ -11,6 +10,10 @@ if status is-login
 	eval (dircolors -c ~/.dircolors)
 end
 
+#echo -ne '\eP\e]12;#6d207a\a'	# HC2
+#set -g fish_key_bindings fish_vi_key_binding
+
+
 set -Ux fish_term24bit 1
 
 set -gx EDITOR /usr/bin/vi
@@ -18,8 +21,9 @@ set -gx GHQ_ROOT /home/odroid/.ghq
 
 # PATH
 set CLANGHOME /usr/local/clang+llvm-12.0.1-armv7a-linux-gnueabihf
+set -l NODEHOME /usr/local/node-v16.13.0-linux-armv7l
 set -x PATH $CLANGHOME/bin $PATH
-set -x PATH $HOME/.go/bin /usr/local/go1.17.2/bin /usr/local/node-v14.18.1-linux-armv7l/bin $PATH
+set -x PATH $HOME/.go/bin /usr/local/go1.17.2/bin $NODEHOME/bin $PATH
 set -gx CC $CLANGHOME/bin/clang
 set -gx CXX $CLANGHOME/bin/clang++
 set -gx LD_LIBRARY_PATH $CLANGHOME/lib $LD_LIBRARY_PATH 
