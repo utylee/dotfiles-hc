@@ -3,9 +3,10 @@ set nocompatible
 "source $VIMRUNTIME/mswin.vim
 "behave mswin
 
-if &shell =~# 'fish$'
-	set shell=sh
-endif
+"이게 있으니 :term가 아니고 기본 sh 로 되어 ts.fish이 실행이 안됩니다
+"if &shell =~# 'fish$'
+	"set shell=sh
+"endif
 set iskeyword+=-
 "
 " esc 누를시 딜레이를 없애줍니다
@@ -512,7 +513,9 @@ set noshellslash
 "nmap <leader>e :!python3 %<CR>
 "nmap <leader>e :!python3 '%:p'<CR>
 "nmap <leader>e :set shellcmdflag=-ic <CR> :!ts python '%'<CR> <CR> :set shellcmdflag=-c<CR>
-nmap <leader>e :!ts python '%:p' 2>/dev/null<CR> <CR>
+nmap <leader>ee :!ts python '%:p' 2>/dev/null<CR> <CR>
+nmap <leader>er :!ts cargo run -j6<CR> <CR>
+nmap <leader>ew :!ts tsc '%:p' 2>/dev/null<CR> <CR>
 "nmap <leader>w :!ts cargo build --release<CR> <CR>
 nmap <leader>w :!ts cargo run -j6<CR> <CR>
 "nmap <leader>w :!ts rustc '%:t' 2>/dev/null<CR> <CR>
