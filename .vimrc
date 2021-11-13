@@ -59,6 +59,22 @@ let g:terminal_ansi_colors = [
     \ '#002b36', '#cb4b16', '#586e75', '#657b83',
     \ '#839496', '#6c71c4', '#93a1a1', '#fdf6e3']
 
+
+" Ultisnips  ------------------------------------------------------
+
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+"----------------------------------------------------------------
+
+
+
 "let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
 "command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '-l', <bang>0)
 "command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '-l --path-to-ignore ~/.ignore --nocolor --hidden -g ""', <bang>0)
@@ -560,11 +576,11 @@ nmap <leader>Z :ProsessionDelete<cr>
 "nmap <leader>f :CtrlPCurWD<cr>
 "nmap <leader>v :Marks<cr>
 nmap <leader>a :Rg<cr>
+nmap <leader>s :Tags<cr>
+nmap <leader>d :BTags<cr>
 nmap <leader>k :BLines<cr>
 nmap <leader>l :Lines<cr>
-nmap <leader>s :Tags<cr>
 "nmap <leader>d :Tags<cr>
-nmap <leader>d :BTags<cr>
 "nmap <leader>g :ProjectFiles<cr>
 nmap <leader>f :Files<cr>
 nmap <silent> <leader>ud :BTags <C-R><C-W><CR>
@@ -572,6 +588,13 @@ nmap <silent> <Leader>us :Tags <C-R><C-W><CR>
 nmap <silent> <Leader>ua :Rg <C-R><C-W><CR>
 nmap <silent> <Leader>ul :Lines <C-R><C-W><CR>
 nmap <silent> <Leader>uk :BLines <C-R><C-W><CR>
+
+"command history
+nmap <C-s>s :History:<cr>
+"search histrory
+nmap <C-s>f :History/<cr>
+"search snippet
+nmap <C-s>n :Snippets<cr>
 
 " for vim-fugitive
 nmap <leader>gd :Gdiffsplit<cr>
