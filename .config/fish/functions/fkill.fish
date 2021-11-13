@@ -12,8 +12,8 @@ function fkill
         set pid (ps -ef | sed 1d | fzf -m --reverse --height 40% | awk '{ print $2; }')
     end
 
-    echo $pid | xargs kill $signal
-	#test -z $pid
-	#or echo $pid | xargs kill $signal
+	#echo $pid | xargs kill $signal
+	test -z $pid
+	or echo $pid | xargs kill $signal
 	commandline -f repaint
 end
