@@ -13,7 +13,7 @@ function fkill
     end
 
 	#echo $pid | xargs kill $signal
-	test -z $pid
+	test -z "$pid"
 	or echo $pid | xargs kill $signal
 	commandline -f repaint
 end
