@@ -11,15 +11,20 @@ tmux split-window -d -t vBLOG -v -p 25
 
 tmux select-window -t vBLOG
 
+# 각 pane에 이름을 줘서 선택해보게끔 했는데 잘안됐습니다
+#tmux select-pane -t 0 -T vBLOG_EDIT
+#tmux select-pane -t 1 -T vBLOG_CMD
+
 tmux send-keys -t vBLOG.0 "source ~/.virtualenvs/blog/bin/activate.fish" Enter
 tmux send-keys -t vBLOG.1 "source ~/.virtualenvs/blog/bin/activate.fish" Enter
 sleep 1
 tmux send-keys -t vBLOG.0 "cd ~/.virtualenvs/blog/src" Enter
 tmux send-keys -t vBLOG.0 "vi" Enter
 tmux send-keys -t vBLOG.1 "cd ~/.virtualenvs/blog/src" Enter "clear" Enter
-sleep 1.2 
-tmux send-keys -t vBLOG.0 ":Virtu" Tab Space "blog" Enter
-sleep 1 
+#removed virtualenv for vim
+#sleep 1.2 
+#tmux send-keys -t vBLOG.0 ":Virtu" Tab Space "blog" Enter
+#sleep 1 
 tmux send-keys -t vBLOG.0 ":cd ~/.virtualenvs/blog/src" Enter
 
 
