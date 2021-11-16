@@ -32,6 +32,16 @@ let g:simple_todo_map_normal_mode_keys = 0
 
 nnoremap ,c :let @+ = expand("%:p").":".line('.')<cr>
 
+"let g:lsc_server_commands = {'javascript': 'typescript-language-server --stdio'}
+let g:lsc_server_commands = {
+		\ 'javascript': 'typescript-language-server --stdio'
+		\ }
+let g:lsc_auto_map = v:true
+
+"let g:lsc_enable_autocomplete  = v:true
+"let g:lsc_enable_diagnostics   = v:false
+"let g:lsc_reference_highlights = v:false
+"let g:lsc_trace_level          = 'off'
 
 set rtp+=~/.fzf
 let g:fzf_history_dir = '~/.fzf/fzf-history'
@@ -61,18 +71,18 @@ let g:terminal_ansi_colors = [
     \ '#839496', '#6c71c4', '#93a1a1', '#fdf6e3']
 
 
-" Ultisnips  ------------------------------------------------------
-
-" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
-" - https://github.com/Valloric/YouCompleteMe
-" - https://github.com/nvim-lua/completion-nvim
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-"----------------------------------------------------------------
+"" Ultisnips  ------------------------------------------------------
+"
+"" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+"" - https://github.com/Valloric/YouCompleteMe
+"" - https://github.com/nvim-lua/completion-nvim
+""let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"
+"" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
+""----------------------------------------------------------------
 
 
 
@@ -366,6 +376,12 @@ function! StatusLine(current, width)
     let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
   endif
 
+  if a:current
+    let l:s .= ' %{tagbar#currenttag(" %s\ ","")}'
+    "let l:s .= crystalline#right_sep('', 'Fill') . ' %{tagbar#currenttag(" %s\ ","")}'
+"set statusline+=%{tagbar#currenttag('[%s]\ ','')}
+  endif
+
   let l:s .= '%='
   if a:current
     let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
@@ -384,6 +400,7 @@ function! TabLine()
   let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
   return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
 endfunction
+
 
 let g:crystalline_enable_sep = 1
 let g:crystalline_statusline_fn = 'StatusLine'
