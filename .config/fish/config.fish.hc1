@@ -21,10 +21,11 @@ set -gx EDITOR /usr/bin/vi
 set -gx GHQ_ROOT /home/odroid/.ghq
 
 # PATH
-set CLANGHOME /usr/local/clang-14-dev
+#set CLANGHOME /usr/local/clang-14-dev
+set CLANGHOME /usr/local/clang+llvm-12.0.1-armv7a-linux-gnueabihf
 set -l NODEHOME /usr/local/node-v16.13.0-linux-armv7l
 set -x PATH $CLANGHOME/bin $PATH
-set -x PATH $HOME/.go/bin /usr/local/go1.17.2/bin $NODEHOME/bin $PATH
+set -x PATH $HOME/.go/bin /usr/local/go1.17.3/bin $NODEHOME/bin $PATH
 set -gx CC $CLANGHOME/bin/clang
 set -gx CXX $CLANGHOME/bin/clang++
 set -gx LD_LIBRARY_PATH $CLANGHOME/lib $LD_LIBRARY_PATH 
@@ -38,7 +39,7 @@ set -gx FZF_DEFAULT_OPTS "--ansi"
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -gx FZF_CTRL_F_COMMAND "fd --type d --hidden --color=always . $HOME"
 set -gx FZF_ALT_C_COMMAND "fd --type d --hidden --color=always"
-set -gx FZF_CTRL_R_OPTS "--reverse --height 50%"
+set -gx FZF_CTRL_R_OPTS "--reverse --height 100%"
 #set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
 #set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --follow --no-ignore"
