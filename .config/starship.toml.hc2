@@ -27,7 +27,8 @@ $character\
 success_symbol = "[❯](bold #6d207a)"
 #error_symbol = "[✗](fg:1)"
 error_symbol = "[❯](fg:1)"
-vicmd_symbol = "[N](fg:14 bold)"
+#vicmd_symbol = "[N](fg:14 bold)"
+vicmd_symbol = "[\uE0B9](fg:15)"
 #vicmd_symbol = "[❮](bold #207dab)"
 
 #format = """
