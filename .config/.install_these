@@ -46,6 +46,12 @@ sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 	* 이미 fish 상태라면 아래아래처럼 합니다
 	sh -c (curl -fsSL https://starship.rs/install.sh)
 
+* pyenv build dependencies 혹은 기본 설치해야할 것들
+sudo apt-get update; sudo apt-get install make build-essential \
+libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
+wget curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+
 * 참고: 
 .결국 아래를 포기하고 그냥 mpd와 vlc 혹은 웹재생을 선택하기로 했습니다.
  owntone 뮤직서버 설치시 avahi-daemon을 같이 설치해야되는데, 

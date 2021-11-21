@@ -18,7 +18,7 @@ end
 set -Ux fish_term24bit 1
 
 set -gx EDITOR /usr/bin/vi
-set -gx GHQ_ROOT /home/odroid/.ghq
+set -gx GHQ_ROOT /home/utylee/.ghq
 
 # PATH
 #set CLANGHOME /usr/local/clang-14-dev
