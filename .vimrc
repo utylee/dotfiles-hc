@@ -45,7 +45,7 @@ let g:lsc_auto_map = v:true
 
 set rtp+=~/.fzf
 let g:fzf_history_dir = '~/.fzf/fzf-history'
-let g:fzf_layout = { 'down': '40%' }
+let g:fzf_layout = { 'down': '100%' }
 let g:fzf_preview_window = []
 
 let g:fzf_colors =
@@ -84,6 +84,11 @@ let g:terminal_ansi_colors = [
 "let g:UltiSnipsEditSplit="vertical"
 ""----------------------------------------------------------------
 
+
+
+"command! -bang -nargs=? -complete=dir Files
+    "\ call fzf#vim#files(<q-args>,
+	"\ {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 
 
 "let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
@@ -543,9 +548,14 @@ let g:rooter_manual_only = 1
 "nmap <leader>w :exec '!ts python -c \"'getline('.')'\"'<CR>
 nmap <leader>` :set fullscreen<CR>
 
-nmap <leader>qq :bd!<CR>
-nmap <leader>qa :%bd!<CR>
-nmap <leader>qc :cclose<CR>
+"nmap <leader>qq :bd!<CR>
+"nmap <leader>qa :%bd!<CR>
+"nmap <leader>qc :cclose<CR>
+nmap <leader>q :bd!<CR>
+nmap ,q :%bd!<CR>
+nmap ,c :cclose<CR>
+" ;의 반대방향 역할을 하는 ,키를 더블클릭으로 사용하기 위함입니다
+nmap ,, ,			
 
 nmap <leader>c :!ts C-c<CR> <CR>
 "map <F7> :NERDTreeTabsToggle<CR>
