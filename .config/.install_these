@@ -51,6 +51,9 @@ sudo apt-get update; sudo apt-get install make build-essential \
 libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
 wget curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
+* fish-shell dependencies
+sudo apt-get install build-essential cmake ncurses-dev libncurses5-dev libpcre2-dev gettext
+
 
 * 참고: 
 .결국 아래를 포기하고 그냥 mpd와 vlc 혹은 웹재생을 선택하기로 했습니다.
