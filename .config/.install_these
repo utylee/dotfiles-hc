@@ -49,10 +49,8 @@ sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 * pyenv build dependencies 혹은 기본 설치해야할 것들
 sudo apt-get update; sudo apt-get install make build-essential \
 libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
-wget curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-
-* fish-shell dependencies
-sudo apt-get install build-essential cmake ncurses-dev libncurses5-dev libpcre2-dev gettext
+wget curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
+libpq-dev libcurl4-openssl-dev
 
 
 * 참고: 
