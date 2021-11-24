@@ -13,10 +13,10 @@ sleep 0.5
 tmux send-keys -t vMISC.0 "cd ~/.virtualenvs/misc/src" Enter
 tmux send-keys -t vMISC.0 "vi" Enter
 tmux send-keys -t vMISC.1 "cd ~/.virtualenvs/misc/src" Enter "clear" Enter
-sleep 2 
-tmux send-keys -t vMISC.0 ":Virtu" Tab Space "misc" Enter
-sleep 0.5
-tmux send-keys -t vMISC.0 ":cd ~/.virtualenvs/misc/src" Enter
+#sleep 2 
+#tmux send-keys -t vMISC.0 ":Virtu" Tab Space "misc" Enter
+#sleep 0.5
+#tmux send-keys -t vMISC.0 ":cd ~/.virtualenvs/misc/src" Enter
 
 ##misc-3.6을 가리키게 합니다. pyenv와 virtualenvwrapper를 통해 python3.6을 설치해보았습니다
 ##tmux send-keys -t vMISC.1 "workon 3.4test" Enter
