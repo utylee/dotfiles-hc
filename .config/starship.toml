@@ -17,17 +17,20 @@ add_newline = false
 
 format = """
 $python\
-[HC2](bold fg:#6d207a)\
+[HC2](bold fg:#059980)\
 $username\
 $directory\
 $git_branch$git_commit\
 $character\
 """
+#[HC2](bold fg:#6d207a)\
 [character]
-success_symbol = "[❯](bold #6d207a)"
+#success_symbol = "[❯](bold #6d207a)"
+success_symbol = "[❯](bold #059980)"
 #error_symbol = "[✗](fg:1)"
 error_symbol = "[❯](fg:1)"
-vicmd_symbol = "[N](fg:14 bold)"
+#vicmd_symbol = "[N](fg:14 bold)"
+vicmd_symbol = "[\uE0B9](fg:15)"
 #vicmd_symbol = "[❮](bold #207dab)"
 
 #format = """
