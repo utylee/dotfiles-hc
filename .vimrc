@@ -33,6 +33,7 @@ set rtp+=~/.fzf
 let g:fzf_history_dir = '~/.fzf/fzf-history'
 let g:fzf_layout = { 'down': '100%' }
 let g:fzf_preview_window = []
+"let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=node_modules --exclude=test'
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -111,8 +112,8 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap ,r <Plug>(coc-rename)
-
+nmap ,e <Plug>(coc-rename)
+nmap ,d <Plug>(coc-codeaction)
 
 
 
@@ -371,8 +372,9 @@ nmap <leader>` :set fullscreen<CR>
 nmap <leader>q :bd!<CR>
 nmap ,q :%bd!<CR>
 nmap ,c :cclose<CR>
+nmap ,r :syntax sync fromstart<CR>
 " ;의 반대방향 역할을 하는 ,키를 더블클릭으로 사용하기 위함입니다
-nmap ,, ,			
+nnoremap ,, ,			
 
 nmap <leader>c :!ts C-c<CR> <CR>
 "map <F7> :NERDTreeTabsToggle<CR>
@@ -380,7 +382,7 @@ nmap <leader>c :!ts C-c<CR> <CR>
 "nmap <leader>2 :NERDTreeToggle<CR>
 nmap <leader>1 :e $MYVIMRC<CR>
 "nmap <leader>3 :GitGutterToggle<CR>
-nmap <leader>5 :syntax sync fromstart<CR>
+"nmap <leader>5 :syntax sync fromstart<CR>
 map <A-3> :tabnext<CR>
 map <A-4> :tabprevious<CR>
 "map <F3> :cn<CR>
@@ -401,15 +403,33 @@ nmap <leader>Z :ProsessionDelete<cr>
 
 
 " Use a leader instead of the actual named binding
+
+"nmap <leader>v :Marks<cr>
+"nmap ;a :Rg<cr>
+"nmap ;s :Tags<cr>
+"nmap ;d :BTags<cr>
+"nmap ;k :BLines<cr>
+"nmap ;l :Lines<cr>
+""nmap <leader>g :ProjectFiles<cr>
+"nmap ;f :Files<cr>
+"nmap ;ud :BTags <C-R><C-W><CR>
+"nmap ;us :Tags <C-R><C-W><CR>
+"nmap ;ua :Rg <C-R><C-W><CR>
+"nmap ;ul :Lines <C-R><C-W><CR>
+"nmap ;uk :BLines <C-R><C-W><CR>
+
 "nmap <leader>v :Marks<cr>
 nmap <leader>a :Rg<cr>
 nmap <leader>s :Tags<cr>
 nmap <leader>d :BTags<cr>
 nmap <leader>k :BLines<cr>
 nmap <leader>l :Lines<cr>
-"nmap <leader>d :Tags<cr>
 "nmap <leader>g :ProjectFiles<cr>
-nmap <leader>f :Files<cr>
+
+command! Dirs call fzf#run(fzf#wrap({'source': 'fd --type d --hidden --color=always', 'sink': 'edit'}))
+nmap <leader>fa :Files<cr>
+nmap <leader>ff :Dirs<cr>
+"nmap <leader>f :Files<cr>
 nmap <silent> <leader>ud :BTags <C-R><C-W><CR>
 nmap <silent> <Leader>us :Tags <C-R><C-W><CR>
 nmap <silent> <Leader>ua :Rg <C-R><C-W><CR>
