@@ -27,7 +27,7 @@ set grepprg=rg\ --color=never
 
 let g:simple_todo_map_normal_mode_keys = 0
 
-nnoremap ,c :let @+ = expand("%:p").":".line('.')<cr>
+nnoremap ,x :let @+ = expand("%:p").":".line('.')<cr>
 
 set rtp+=~/.fzf
 let g:fzf_history_dir = '~/.fzf/fzf-history'
@@ -445,6 +445,7 @@ nmap <C-s>n :Snippets<cr>
 
 " for vim-fugitive
 nmap <leader>gd :Gdiffsplit<cr>
+nmap <leader>gv :Gvdiffsplit<cr>
 nmap <leader>gb :Git blame<cr>
 nmap <leader>gw :Gwrite<cr>
 nmap <leader>gr :Gread<cr>
