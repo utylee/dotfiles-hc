@@ -6,6 +6,8 @@ set nocompatible
 "=================================================================
 " remove ncm2, asyncomplete, nerdtree, deoplete, ctrlp, vunble, 
 
+let g:netrw_keepdir=0
+
 
 "이게 있으니 :term가 아니고 기본 sh 로 되어 ts.fish이 실행이 안됩니다
 "if &shell =~# 'fish$'
@@ -25,6 +27,7 @@ set updatetime=1000
 set grepprg=rg\ --color=never
 "set grepprg=rg\ --vimgrep
 
+let g:simple_todo_map_keys = 0
 let g:simple_todo_map_normal_mode_keys = 0
 
 nnoremap ,x :let @+ = expand("%:p").":".line('.')<cr>
@@ -114,6 +117,11 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap ,e <Plug>(coc-rename)
 nmap ,d <Plug>(coc-codeaction)
+
+" coc-prettier settings
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+vmap ;f  <Plug>(coc-format-selected)
+nmap ;f  <Plug>(coc-format-selected)
 
 
 
@@ -251,6 +259,7 @@ execute pathogen#infect()
 
 filetype plugin indent on
 syntax on
+"syntax enable
 
 set nocompatible
 
@@ -361,7 +370,7 @@ nmap <leader>w :!ts cargo run -j6<CR> <CR>
 "nmap <leader>w :!ts rustc '%:t' 2>/dev/null<CR> <CR>
 "nmap <leader>e :!ts python '%' 2>/dev/null<CR> <CR>
 "현재 행을 실행하는 커맨드인데 공백제거가 안돼 아직 제대로 되지 않습니다
-nmap <leader>r :Rooter<CR>
+"nmap <leader>r :Rooter<CR>
 let g:rooter_manual_only = 1
 "nmap <leader>w :exec '!ts python -c \"'getline('.')'\"'<CR>
 nmap <leader>` :set fullscreen<CR>
@@ -375,6 +384,11 @@ nmap ,c :cclose<CR>
 nmap ,r :syntax sync fromstart<CR>
 " ;의 반대방향 역할을 하는 ,키를 더블클릭으로 사용하기 위함입니다
 nnoremap ,, ,			
+
+nmap ;z :cd %:p:h<cr> :pwd<cr>
+nmap ;Z :ProsessionDelete<cr>
+nmap ;r :Rooter<CR>
+nnoremap ;; ;
 
 nmap <leader>c :!ts C-c<CR> <CR>
 "map <F7> :NERDTreeTabsToggle<CR>
@@ -398,8 +412,8 @@ map <A-4> :tabprevious<CR>
 " 현재파일의 디렉토리로 변경 %->  상대경로파일명, :p-> 절대경로파일명, :h->
 " 한마디전으로
 
-nmap <leader>z :cd %:p:h<cr> :pwd<cr>
-nmap <leader>Z :ProsessionDelete<cr>
+"nmap <leader>z :cd %:p:h<cr> :pwd<cr>
+"nmap <leader>Z :ProsessionDelete<cr>
 
 
 " Use a leader instead of the actual named binding
@@ -433,6 +447,7 @@ nmap <leader>ff :Dirs<cr>
 nmap <silent> <leader>ud :BTags <C-R><C-W><CR>
 nmap <silent> <Leader>us :Tags <C-R><C-W><CR>
 nmap <silent> <Leader>ua :Rg <C-R><C-W><CR>
+nmap <silent> <leader>uf :Files <C-R><C-W><CR>
 nmap <silent> <Leader>ul :Lines <C-R><C-W><CR>
 nmap <silent> <Leader>uk :BLines <C-R><C-W><CR>
 
