@@ -57,6 +57,10 @@ apt-get install libperl-dev libpcre3 libpcre3-dev zlib1g zlib1g-dev openssl libs
 #아래 몇개 설치한 건 빼고 위에 축약본입니다
 #apt-get install make libperl-dev libpcre3 libpcre3-dev zlib1g zlib1g-dev openssl libssl-dev libxml2-dev libxslt1-dev libgd-dev libgeoip-dev google-perftools libgoogle-perftools-dev gcc g++
 
+* nginx service 등록
+git clone https://github.com/Fleshgrinder/nginx-sysvinit-script.git
+sudo make install
+
 
 * 참고: 
 .결국 아래를 포기하고 그냥 mpd와 vlc 혹은 웹재생을 선택하기로 했습니다.
