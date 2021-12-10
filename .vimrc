@@ -438,11 +438,12 @@ nmap <leader>s :Tags<cr>
 nmap <leader>d :BTags<cr>
 nmap <leader>k :BLines<cr>
 nmap <leader>l :Lines<cr>
-"nmap <leader>g :ProjectFiles<cr>
 
 command! Dirs call fzf#run(fzf#wrap({'source': 'fd --type d --hidden --color=always', 'sink': 'edit'}))
 nmap <leader>fa :Files<cr>
 nmap <leader>ff :Dirs<cr>
+nmap <leader>fg :ProjectFiles<cr>
+" vim-rooter 후 파일찾기를 하는 방법도 있습니다
 "nmap <leader>f :Files<cr>
 nmap <silent> <leader>ud :BTags <C-R><C-W><CR>
 nmap <silent> <Leader>us :Tags <C-R><C-W><CR>
