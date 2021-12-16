@@ -327,6 +327,14 @@ set laststatus=2
 
 "let g:user_emmet_install_global = 0
 "autocmd FileType html,css EmmetInstall
+let g:user_emmet_leader_key='<C-Q>'
+
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.js"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js,*.erb'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
+
 
 au BufRead,BufNewFile */etc/nginx/* set ft=nginx
 au BufRead,BufNewFile */nginx/* set ft=nginx
@@ -363,7 +371,8 @@ set noshellslash
 "nmap <leader>e :!python3 '%:p'<CR>
 "nmap <leader>e :set shellcmdflag=-ic <CR> :!ts python '%'<CR> <CR> :set shellcmdflag=-c<CR>
 nmap <leader>ee :!ts python '%:p' 2>/dev/null<CR> <CR>
-nmap <leader>er :!ts cargo run -j6<CR> <CR>
+nmap <leader>er :!ts npm run dev<CR> <CR>
+"nmap <leader>er :!ts cargo run -j6<CR> <CR>
 nmap <leader>ew :!ts tsc '%:p' 2>/dev/null<CR> <CR>
 "nmap <leader>w :!ts cargo build --release<CR> <CR>
 nmap <leader>w :!ts cargo run -j6<CR> <CR>
