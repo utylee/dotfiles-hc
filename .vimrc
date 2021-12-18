@@ -7,6 +7,9 @@ set nocompatible
 " remove ncm2, asyncomplete, nerdtree, deoplete, ctrlp, vunble, 
 
 let g:netrw_keepdir=0
+" htmltag 에서도 %가 동작하게끔 합니다
+runtime macros/matchit.vim
+
 
 
 "이게 있으니 :term가 아니고 기본 sh 로 되어 ts.fish이 실행이 안됩니다
@@ -120,8 +123,12 @@ nmap ,d <Plug>(coc-codeaction)
 
 " coc-prettier settings
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-vmap ;f  <Plug>(coc-format-selected)
-nmap ;f  <Plug>(coc-format-selected)
+" vmap ;f  <Plug>(coc-format-selected)
+" nmap ;f  <Plug>(coc-format-selected)
+
+" 파일저장시 자동 수정이 아닌 수동 수정으로 변경합니다
+nmap ;f  :Prettier<CR>
+
 
 
 
@@ -329,6 +336,10 @@ set laststatus=2
 "autocmd FileType html,css EmmetInstall
 let g:user_emmet_leader_key='<C-Q>'
 
+" emmet-vim 에서 태그제거가 그 내용까지 제거가돼서 vim vanilla로 구현
+noremap <C-Y>k vat<Esc>da>`<da>
+
+
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.js"
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js,*.erb'
 let g:closetag_emptyTags_caseSensitive = 1
@@ -351,7 +362,8 @@ set noswapfile
 set noea 
 
 " 현재 파일의 디렉토리로 이동
-set autochdir
+" netrw 정상 동작을 위해서는 이옵션을 제거해줘야하나 봅니다
+"set autochdir
 " 만약 플러긴에서 문제가 생긴다면 아래대안을 사용할 것
 "nnoremap ,cd :cd %:p:h<CR> 
 
