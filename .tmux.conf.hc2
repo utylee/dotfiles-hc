@@ -1,6 +1,10 @@
 #set-option -g default-terminal screen-256color-italic
-set-option -g default-terminal xterm-256color-italic
-set-option -ga terminal-overrides ",xterm-256color-italic:Tc"
+
+# set-option -g default-terminal xterm-256color-italic
+# set-option -ga terminal-overrides ",xterm-256color-italic:Tc"
+
+set-option -g default-terminal xterm-256color
+set-option -ga terminal-overrides ",xterm-256color:Tc"
 
 #set-option -ga terminal-overrides ",tmux-256color-italic:Tc"
 set -g prefix C-a
@@ -9,6 +13,8 @@ unbind-key C-b
 #unbind-key C-b
 #bind-key C-s send-prefix
 set -sg escape-time 0
+
+unbind Space
 
 set-option -g history-limit 5000
 bind-key _ resize-pane -D 2
