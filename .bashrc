@@ -190,9 +190,10 @@ echo -ne "\x1b[1 q"
 
 #export PYENV_ROOT="$HOME/.pyenv"
 export CLANGHOME=/usr/local/clang+llvm-12.0.1-armv7a-linux-gnueabihf
+export NODEHOME=/usr/local/node-v16.13.0-linux-armv7l
 #export PATH="/usr/local/clang+llvm-7.0.1-armv7a-linux-gnueabihf/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
 #export PATH="$CLANGHOME/bin:$HOME/.cargo/bin:$PYENV_ROOT/bin:$PATH"
-export PATH="$CLANGHOME/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$NODEHOME/bin:$CLANGHOME/bin:$HOME/.cargo/bin:$PATH"
 #export LD_LIBRARY_PATH="/usr/local/clang_7.0.1/lib:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH="$CLANGHOME/lib:$LD_LIBRARY_PATH"
 #export PATH="$HOME/.cargo/bin:$PATH"
