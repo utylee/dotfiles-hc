@@ -61,6 +61,11 @@ apt-get install libperl-dev libpcre3 libpcre3-dev zlib1g zlib1g-dev openssl libs
 git clone https://github.com/Fleshgrinder/nginx-sysvinit-script.git
 sudo make install
 
+* npm 을 sudo에서 실행이 가능하게 하는 방법
+sudo EDITOR=vi visudo 실행후
+Defaults   secure_path=에 /usr/local/node-v16.13.0-linux-armv7l/bin 등의
+npm 폴더를 추가해줍니다
+
 
 * 참고: 
 .결국 아래를 포기하고 그냥 mpd와 vlc 혹은 웹재생을 선택하기로 했습니다.
