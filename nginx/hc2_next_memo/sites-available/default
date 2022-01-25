@@ -37,6 +37,7 @@ server {
 		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 		proxy_redirect off;
 		proxy_buffering off;
+		# websocket을 끊는 제한이 기본으로 60이라고 합니다. 넉넉하게 30분으로 늘려줬습니다
 		proxy_read_timeout 1800;
 
 		proxy_pass http://api;

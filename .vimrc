@@ -157,8 +157,11 @@ nmap ;f  :Prettier<CR>
 
 " fzf 에서 Ag 실행시 옵션과 파일명이 아닌 컨텐츠에서의 검색만을 하도록 하는
 " 옵션입니다
-
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, ' --path-to-ignore ~/.ignore', {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+" fzf 에서 Rg 실행시 옵션과 파일명이 아닌 컨텐츠에서의 검색만을 하도록 하는
+" 옵션입니다
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 
 function! s:find_git_root()
