@@ -12,7 +12,7 @@
     "blocklist-url": "http://www.example.com/blocklist",
     "cache-size-mb": 4,
     "dht-enabled": true,
-    "download-dir": "/home/odroid/media/4002/00-MediaWorld-4002",
+    "download-dir": "/home/utylee/media/4002/00-MediaWorld-4002",
     "download-limit": 1000,
     "download-limit-enabled": 0,
     "download-queue-enabled": true,
@@ -48,7 +48,7 @@
     "rpc-enabled": true,
     "rpc-host-whitelist": "",
     "rpc-host-whitelist-enabled": true,
-    "rpc-password": "{74d2776eba90bdae6a51031ab409e39825a1aabbAuk9ohMf",
+    "rpc-password": "{6f6086bd55e9d4ca4c541f686ebd72d6aa99c4f4M00XO.ta",
     "rpc-port": 9091,
     "rpc-url": "/transmission/",
     "rpc-username": "transmission",
@@ -70,6 +70,6 @@
     "upload-limit-enabled": 0,
     "upload-slots-per-torrent": 14,
     "utp-enabled": true,
-    "watch-dir": "/home/odroid/media/4001/99-data/91-transmission-watch/",
+    "watch-dir": "/home/utylee/media/4001/99-data/91-transmission-watch/",
     "watch-dir-enabled": true
 }
