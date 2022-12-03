@@ -54,7 +54,8 @@ server {
 	listen 80;
 	#listen 9999;
 	# server_name 192.168.1.205;
-	server_name 192.168.1.203;
+	# server_name 192.168.1.203;
+	server_name _;
 	#server_name 192.168.1.203:3000;
 	# server_name localhost;
 	#listen 3000;
