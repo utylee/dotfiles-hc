@@ -20,9 +20,15 @@ set -Ux fish_term24bit 1
 set -gx EDITOR /usr/bin/vi
 set -gx GHQ_ROOT /home/utylee/.ghq
 
+# vim YouCompleteMe 파이썬 컴파일을 위해서 설정해야했습니다
+# libbz2-dev, libreadline-dev, libsqlite3-dev 등을 추가로 설치해줘야했습니다
+set -gx PYTHON_CONFIGURE_OPTS "--enable-shared"
+
 # PATH
 set CLANGHOME /usr/local/clang+llvm-12.0.1-armv7a-linux-gnueabihf
-set -l NODEHOME /usr/local/node-v16.13.0-linux-armv7l
+set -l NODEHOME /usr/local/node-v18.12.1-linux-armv7l
+# set -l NODEHOME /usr/local/node-v16.13.0-linux-armv7l
+# set -l NODEHOME /usr/local/node-v16.18.0-linux-armv7l
 #set -l NODEHOME /usr/local/node-v14.18.1-linux-armv7l
 set -x PATH $CLANGHOME/bin $PATH
 set -x PATH $HOME/.go/bin /usr/local/go1.17.3/bin $NODEHOME/bin $PATH
