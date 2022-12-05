@@ -282,29 +282,31 @@ command! -nargs=0 Format :call CocActionAsync('format')
 " command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "  vmap ;f  <Plug>(coc-format-selected)
 " nmap ;f  <Plug>(coc-format-selected)
-nmap ;f  :Prettier<CR>
-nmap ;g	 :ALEFix<CR>
+" nmap ;f  :Prettier<CR>
+nmap ;f	 :ALEFix<CR>
 " nmap ;g	 :Format<CR>
 
-let g:prettier#exec_cmd_async = 1
-let g:prettier#config#print_width = 82
-let g:prettier#config#use_tabs = 'false'
-let g:prettier#config#tab_width = 2
+" let g:prettier#exec_cmd_async = 1
+" let g:prettier#config#print_width = 82
+" let g:prettier#config#use_tabs = 'false'
+" let g:prettier#config#tab_width = 2
 
 let g:ycm_key_invoke_completion = '<C-k>'
 
-augroup FiletypeGroup
-    autocmd!
-    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-augroup END
+" augroup FiletypeGroup
+"     autocmd!
+"     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+" augroup END
 
 " let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
+" let g:ale_linters = {'jsx': ['']}
 " let g:ale_linters = {'jsx': ['eslint']}
 
 " \   'javascript': ['eslint'],
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \	'python': ['autopep8'],
+\   'javascript': ['prettier'],
 \}
 
 let g:ale_python_autopep8_options = '--max-line-length 80 -a -a --experimental'
