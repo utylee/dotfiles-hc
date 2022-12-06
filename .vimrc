@@ -6,6 +6,9 @@ set nocompatible
 "=================================================================
 " remove ncm2, asyncomplete, nerdtree, deoplete, ctrlp, vunble, 
 
+
+colorscheme solarized_sd_utylee
+
 let g:netrw_keepdir=0
 runtime macros/matchit.vim
 
@@ -298,6 +301,7 @@ let g:ycm_key_invoke_completion = '<C-k>'
 "     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 " augroup END
 
+" let g:ale_linters_explicit = 1 "설정을 해줬을 경우만 lint를 가동합니다
 " let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
 " let g:ale_linters = {'jsx': ['']}
 " let g:ale_linters = {'jsx': ['eslint']}
@@ -310,6 +314,19 @@ let g:ale_fixers = {
 \}
 
 let g:ale_python_autopep8_options = '--max-line-length 80 -a -a --experimental'
+let g:ale_set_highlights = 1 
+
+" 색상 변경이 되지 않는 것을 수정하는 코드입니다
+"  참조주소: https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
+augroup MyColors
+    autocmd!
+    " autocmd ColorScheme * highlight link ALEWarning ColorColumn
+    autocmd ColorScheme * highlight link ALEWarning Underlined
+				" \		| highlight link ALEWarningSign Label 
+augroup END
+
+" highlight clear ALEErrorSign
+" highlight clear ALEWarningSign
 
 
 "" Ultisnips  ------------------------------------------------------
@@ -695,7 +712,7 @@ nmap <leader>= :resize +5<cr>
 "colorscheme monokai "oreilly jellybeans sweyla1 
 "set background=dark
 "colorscheme solarized 
-colorscheme solarized_sd_utylee
+" colorscheme solarized_sd_utylee
 
 "let python_no_builtin_highlight = 1  
 "let g:molokai_original = 1
