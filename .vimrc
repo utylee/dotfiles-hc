@@ -117,7 +117,7 @@ let g:terminal_ansi_colors = [
 "nmap <silent> gr <Plug>(coc-references)
 
 "" Use K to show documentation in preview window.
-"nnoremap <silent> K :call ShowDocumentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
 "function! ShowDocumentation()
 "  if CocAction('hasProvider', 'hover')
@@ -488,12 +488,12 @@ function! StatusLine(current, width)
   let l:s .= ' %f%h%w%m%r '
   if a:current
     " let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
-    let l:s .= crystalline#right_sep('', 'Fill') . ' %{FugitiveHead()}'
+    " let l:s .= crystalline#right_sep('', 'Fill') . ' %{FugitiveHead()}'
   endif
 
   if a:current
-    let l:s .= ' %{tagbar#currenttag(" %s\ ","")}'
-    "let l:s .= crystalline#right_sep('', 'Fill') . ' %{tagbar#currenttag(" %s\ ","")}'
+    " let l:s .= ' %{tagbar#currenttag(" %s\ ","")}'
+    let l:s .= crystalline#right_sep('', 'Fill') . ' %{tagbar#currenttag(" %s\ ","")}'
 "set statusline+=%{tagbar#currenttag('[%s]\ ','')}
   endif
 
@@ -503,7 +503,8 @@ function! StatusLine(current, width)
     let l:s .= crystalline#left_mode_sep('')
   endif
   if a:width > 80
-    let l:s .= ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
+    " let l:s .= ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
+    let l:s .= ' [%{&fenc!=#""?&fenc:&enc}/%{&ff}] %l/%L %c%V %P '
   else
     let l:s .= ' '
   endif
@@ -516,6 +517,13 @@ function! TabLine()
   return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
 endfunction
 
+let g:crystalline_mode_labels = {
+        \ 'n': ' N ',
+        \ 'i': ' I ',
+        \ 'v': ' VISUAL ',
+        \ 'R': ' REPLACE ',
+        \ '': '',
+        \ }
 
 let g:crystalline_enable_sep = 1
 let g:crystalline_statusline_fn = 'StatusLine'
