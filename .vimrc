@@ -4,7 +4,7 @@ set nocompatible
 "behave mswin
 
 "=================================================================
-" remove ncm2, asyncomplete, nerdtree, deoplete, ctrlp, vunble, 
+" remove ncm2, asyncomplete, nerdtree, deoplete, ctrlp, vunble,
 
 
 colorscheme solarized_sd_utylee
@@ -148,15 +148,15 @@ nnoremap <silent> K :call ShowDocumentation()<CR>
 
 "" Applying code actions to the selected code block.
 "" Example: `<leader>aap` for current paragraph
-"" xmap <leader>a  <Plug>(coc-codeaction-selected)
-"" nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap ;a  <Plug>(coc-codeaction-selected)
+nmap ;a  <Plug>(coc-codeaction-selected)
 
-"" " Remap keys for apply code actions at the cursor position.
-"" nmap <leader>ac  <Plug>(coc-codeaction-cursor)
-"" " Remap keys for apply code actions affect whole buffer.
-"" nmap <leader>as  <Plug>(coc-codeaction-source)
-"" " Apply the most preferred quickfix action to fix diagnostic on the current line.
-"" nmap <leader>qf  <Plug>(coc-fix-current)
+" Remap keys for apply code actions at the cursor position.
+nmap ;ac  <Plug>(coc-codeaction-cursor)
+" Remap keys for apply code actions affect whole buffer.
+nmap ;as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line.
+nmap ;qf  <Plug>(coc-fix-current)
 
 "" Remap keys for apply refactor code actions.
 "" nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
@@ -314,7 +314,7 @@ let g:ale_fixers = {
 \}
 
 let g:ale_python_autopep8_options = '--max-line-length 80 -a -a --experimental'
-let g:ale_set_highlights = 1 
+let g:ale_set_highlights = 1
 
 " 색상 변경이 되지 않는 것을 수정하는 코드입니다
 "  참조주소: https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
@@ -322,7 +322,7 @@ augroup MyColors
     autocmd!
     " autocmd ColorScheme * highlight link ALEWarning ColorColumn
     autocmd ColorScheme * highlight link ALEWarning Underlined
-				" \		| highlight link ALEWarningSign Label 
+				" \		| highlight link ALEWarningSign Label
 augroup END
 
 " highlight clear ALEErrorSign
@@ -536,7 +536,7 @@ set showtabline=2
 set guioptions-=e
 set laststatus=2
 
-"let g:jedi#auto_initialization = 1 
+"let g:jedi#auto_initialization = 1
 "let g:jedi#squelch_py_warning = 1
 "let g:jedi#completions_command = "<C-N>"
 
@@ -567,12 +567,12 @@ set softtabstop=4
 set nobackup
 set noswapfile
 "no equalalways or equalalways --> split 화면에서 사이즈 유즈 관련 세팅
-set noea 
+set noea
 
 " 현재 파일의 디렉토리로 이동
-"set autochdir
+set autochdir
 " 만약 플러긴에서 문제가 생긴다면 아래대안을 사용할 것
-"nnoremap ,cd :cd %:p:h<CR> 
+"nnoremap ,cd :cd %:p:h<CR>
 
 if has("gui_running")
 	"set lines=55
@@ -599,6 +599,7 @@ nmap <leader>w :!ts cargo run -j6<CR> <CR>
 "nmap <leader>e :!ts python '%' 2>/dev/null<CR> <CR>
 "현재 행을 실행하는 커맨드인데 공백제거가 안돼 아직 제대로 되지 않습니다
 "nmap <leader>r :Rooter<CR>
+let g:rooter_patterns = ['.git', 'Makefile', 'Rakefile', 'package.json']
 let g:rooter_manual_only = 1
 "nmap <leader>w :exec '!ts python -c \"'getline('.')'\"'<CR>
 nmap <leader>` :set fullscreen<CR>
@@ -611,7 +612,7 @@ nmap ,q :%bd!<CR>
 nmap ,c :cclose<CR>
 nmap ,r :syntax sync fromstart<CR>
 " ;의 반대방향 역할을 하는 ,키를 더블클릭으로 사용하기 위함입니다
-nnoremap ,, ,			
+nnoremap ,, ,
 
 nmap ;z :cd %:p:h<cr> :pwd<cr>
 nmap ;Z :ProsessionDelete<cr>
@@ -694,8 +695,8 @@ nmap <leader>gb :Git blame<cr>
 nmap <leader>gw :Gwrite<cr>
 nmap <leader>gr :Gread<cr>
 "from fzf
-nmap <leader>gc :BCommits<cr>	
-nmap <leader>gx :Commits<cr>	
+nmap <leader>gc :BCommits<cr>
+nmap <leader>gx :Commits<cr>
 
 "nmap <silent> <Leader>g :BTags <C-R><C-W><CR>
 "nmap <silent> <Leader>h :Tags <C-R><C-W><CR>
@@ -704,7 +705,7 @@ nmap <leader>gx :Commits<cr>
 "
 nmap <leader>x :Ag<cr>
 nmap <leader>b :Buffers<cr>
-nmap <leader>t :History<cr>		
+nmap <leader>t :History<cr>
 
 " Split size change
 nmap <leader>- :resize -5<cr>
@@ -715,14 +716,14 @@ nmap <leader>= :resize +5<cr>
 "noremap dd "_dd
 "noremap p "0p
 
-"colorscheme molokai "oreilly jellybeans sweyla1 
-"colorscheme oreilly "oreilly jellybeans sweyla1 
-"colorscheme monokai "oreilly jellybeans sweyla1 
+"colorscheme molokai "oreilly jellybeans sweyla1
+"colorscheme oreilly "oreilly jellybeans sweyla1
+"colorscheme monokai "oreilly jellybeans sweyla1
 "set background=dark
-"colorscheme solarized 
+"colorscheme solarized
 " colorscheme solarized_sd_utylee
 
-"let python_no_builtin_highlight = 1  
+"let python_no_builtin_highlight = 1
 "let g:molokai_original = 1
 
 
@@ -754,11 +755,11 @@ if v:version >= 700
 endif
 
 "autocmd BufNewFile,BufRead *.qml so c:\vim\vim74\ftplugin\qml.vim
-autocmd BufNewFile,BufRead *.qml setf qml 
+autocmd BufNewFile,BufRead *.qml setf qml
 
 
 set langmenu=utf8
-"lang mes en_US 
+"lang mes en_US
 "set langmenu=en_US.UTF-8
 set tabstop=4
 set encoding=utf8
@@ -778,4 +779,3 @@ set guifont=Ubuntu\ Mono\ derivative\ Powerline:h19
 set guifontwide=NanumGothicCoding:h24
 "set guifontwide=NanumGothicCoding:h15:cDEFAULT
 "set guifontwide=Ubuntu:h15:cDEFAULT
-
