@@ -24,8 +24,6 @@ upstream api_hydro {
 	server unix:/tmp/api_hydro_1.sock fail_timeout=0;
 	# server localhost:8080 fail_timeout=0;
 }
-
-
 upstream memo {
 	server 0.0.0.0:3000 fail_timeout=0;
 }
@@ -38,6 +36,16 @@ upstream api_memo {
 	# server unix:/tmp/api_4.sock fail_timeout=0;
 }
 
+upstream youtube {
+	server 192.168.1.204 fail_timeout=0;
+}
+upstream api_youtube {
+	# supervisor conf.d에 설명해놓았지만 로그파일권한과 소켓 권한의 기로에서
+	# 고생하다가 그냥 포트를 사용하기로 했습니다
+	server localhost:8082 fail_timeout=0;
+	# server unix:/tmp/api_youtube_1.sock fail_timeout=0;
+}
+
 # upstream hydro {
 # 	# server 192.168.1.202:3000 fail_timeout=0;
 # 	server 0.0.0.0:3001 fail_timeout=0;
@@ -46,6 +54,10 @@ upstream api_memo {
 # 	server unix:/temp/api_hydro_1.sock fail_timeout=0;
 # 	# server localhost:8080 fail_timeout=0;
 # }
+
+upstream danawow {
+	server 0.0.0.0:8080 fail_timeout=0;
+} 
 
 server {
 	# server_name utylee.duckdns.org;
@@ -61,9 +73,19 @@ server {
 	#listen 3000;
 
 	include /etc/nginx/servers/*;
+
+	# location /static/ {
+	# 	# autoindex on;
+	# 	alias /home/utylee/.virtualenvs/blog/src/aiohttp/wowinfo/static/;
+	# }
+
+
+
+
+
 	# include next-memo;
 
-	## 뭔짓을 해도 memo의 public 폴더를 바라보게하는 게 안돼서 수동으로 넣어주기로 
+	## 뭔짓을 해도 memo의 public 폴더를 바라보게하는 게 안돼서 수동으로 넣어주기로
 	##했습니다
 	#location /memo/favicon.ico {
 	## location ~ ^/memo/(.*)$ {
@@ -94,7 +116,7 @@ server {
 	#	proxy_read_timeout 1800;
 	#	# proxy_cache_bypass $http_upgrade;
 
-	#	# memo를 assetPrefix로 사용하고 memo/index.html를 사용하고 
+	#	# memo를 assetPrefix로 사용하고 memo/index.html를 사용하고
 	#	# 불필요한 원래 index.html를 제거할시 next export시 변경되는 index.html를
 	#	# 명시해줘야합니다
 	#	# index memo.html;
@@ -157,7 +179,7 @@ server {
 
 	# # nextjs.config 상에서 assetPrefix과 함께 basePath를 사용해봤는데
     # # 도저히 답이 안나와서 public을 차라리 명시적으로 사용하고 nginx가 서빙하는
-    # # 걸로 결론을 냈습니다	  
+    # # 걸로 결론을 냈습니다
 	# location /hydro/public {
 	# 	# autoindex on;
 	# 	alias /home/utylee/.virtualenvs/react/src/next-hydro/public;
@@ -223,6 +245,3 @@ map $sent_http_content_type $expires {
     application/javascript     max;
     ~image/                    max;
 }
-
-
-
