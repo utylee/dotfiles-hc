@@ -45,6 +45,9 @@ upstream api_youtube {
 	server localhost:8082 fail_timeout=0;
 	# server unix:/tmp/api_youtube_1.sock fail_timeout=0;
 }
+# upstream youtube_uploader {
+# 	server 192.168.1.204:9993 fail_timeout=0;
+# }
 
 # upstream hydro {
 # 	# server 192.168.1.202:3000 fail_timeout=0;
