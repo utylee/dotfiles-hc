@@ -26,9 +26,10 @@ set -gx PYTHON_CONFIGURE_OPTS "--enable-shared"
 
 # PATH
 set CLANGHOME /usr/local/clang+llvm-12.0.1-armv7a-linux-gnueabihf
-set -l NODEHOME /usr/local/node-v18.12.1-linux-armv7l
-# set -l NODEHOME /usr/local/node-v16.13.0-linux-armv7l
+set -l NODEHOME /usr/local/node-v20.9.0-linux-armv7l
+# set -l NODEHOME /usr/local/node-v18.12.1-linux-armv7l
 # set -l NODEHOME /usr/local/node-v16.18.0-linux-armv7l
+# set -l NODEHOME /usr/local/node-v16.13.0-linux-armv7l
 #set -l NODEHOME /usr/local/node-v14.18.1-linux-armv7l
 set -x PATH $CLANGHOME/bin $PATH
 set -x PATH $HOME/.go/bin /usr/local/go1.17.3/bin $NODEHOME/bin $PATH
