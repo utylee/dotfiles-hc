@@ -7,7 +7,12 @@ set nocompatible
 " remove ncm2, asyncomplete, nerdtree, deoplete, ctrlp, vunble,
 
 
-colorscheme solarized_sd_utylee
+" colorscheme solarized_sd_utylee
+set background=dark
+let g:gruvbox_italic = 1
+colorscheme gruvbox
+
+
 
 let g:netrw_keepdir=0
 runtime macros/matchit.vim
@@ -576,7 +581,8 @@ let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
 "let g:crystalline_theme = 'default'
 "let g:crystalline_theme = 'molokai'
-let g:crystalline_theme = 'onedark'
+" let g:crystalline_theme = 'onedark'
+let g:crystalline_theme = 'gruvbox'
 
 set showtabline=2
 set guioptions-=e
