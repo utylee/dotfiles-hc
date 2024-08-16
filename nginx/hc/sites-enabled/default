@@ -44,6 +44,7 @@ server {
 		# proxy_pass http://hc2/memo;
 		# proxy_pass http://hc2/aero/;
 		proxy_pass http://192.168.1.203:8123/;
+		# proxy_pass http://192.168.1.204:8123/;
 
 		# proxy_pass http://hc1;
 	}
