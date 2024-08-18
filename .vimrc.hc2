@@ -8,9 +8,16 @@ set nocompatible
 
 
 " colorscheme solarized_sd_utylee
+" set background=dark
+" let g:gruvbox_italic = 1
+" colorscheme gruvbox
+
+
 set background=dark
-let g:gruvbox_italic = 1
-colorscheme gruvbox
+colorscheme selenized
+
+
+
 
 
 
@@ -581,8 +588,8 @@ let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
 "let g:crystalline_theme = 'default'
 "let g:crystalline_theme = 'molokai'
-" let g:crystalline_theme = 'onedark'
-let g:crystalline_theme = 'gruvbox'
+let g:crystalline_theme = 'onedark'
+" let g:crystalline_theme = 'gruvbox'
 
 set showtabline=2
 set guioptions-=e
