@@ -22,9 +22,9 @@ upstream print {
 }
 
 upstream api_print {
-	server localhost:8080 fail_timeout=0;
+	# server localhost:8080 fail_timeout=0;
 
-	# server unix:/tmp/api_print_1.sock fail_timeout=0;
+	server unix:/tmp/api_print_1.sock fail_timeout=0;
 	# server unix:/tmp/api_2.sock fail_timeout=0;
 	# server unix:/tmp/api_3.sock fail_timeout=0;
 	# server unix:/tmp/api_4.sock fail_timeout=0;
