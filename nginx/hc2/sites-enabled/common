@@ -16,6 +16,33 @@
 
 proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off;
 
+upstream print {
+	# server 192.168.1.202:3000 fail_timeout=0;
+	server 0.0.0.0:3002 fail_timeout=0;
+}
+
+upstream api_print {
+	server localhost:8080 fail_timeout=0;
+
+	# server unix:/tmp/api_print_1.sock fail_timeout=0;
+	# server unix:/tmp/api_2.sock fail_timeout=0;
+	# server unix:/tmp/api_3.sock fail_timeout=0;
+	# server unix:/tmp/api_4.sock fail_timeout=0;
+}
+
+# 사용하지 않습니다
+upstream aero {
+	# server 192.168.1.202:3000 fail_timeout=0;
+	server 0.0.0.0:8123 fail_timeout=0;
+	# server localhost:8124 fail_timeout=0;
+	# server 127.0.0.1:8124 fail_timeout=0;
+
+	# server 127.0.0.1:8123 fail_timeout=0;
+	# server 192.168.1.203:8123 fail_timeout=0;
+	# server 0.0.0.0:3001 fail_timeout=0;
+	# server localhost:8123 fail_timeout=0;
+}
+
 upstream hydro {
 	# server 192.168.1.202:3000 fail_timeout=0;
 	server 0.0.0.0:3001 fail_timeout=0;
@@ -43,6 +70,11 @@ upstream api_youtube {
 	# supervisor conf.d에 설명해놓았지만 로그파일권한과 소켓 권한의 기로에서
 	# 고생하다가 그냥 포트를 사용하기로 했습니다
 	server localhost:8082 fail_timeout=0;
+	# server unix:/tmp/api_youtube_1.sock fail_timeout=0;
+}
+upstream watcher_youtube {
+	# 102 PC의 capture_watcher.py 에 연결합니다. deletefile 명령을 전달합니다
+	server 192.168.1.102:8007 fail_timeout=0;
 	# server unix:/tmp/api_youtube_1.sock fail_timeout=0;
 }
 # upstream youtube_uploader {
@@ -74,6 +106,8 @@ server {
 	#server_name 192.168.1.203:3000;
 	# server_name localhost;
 	#listen 3000;
+
+	# error_log /var/log/error.log debug;
 
 	include /etc/nginx/servers/*;
 
