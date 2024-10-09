@@ -40,7 +40,8 @@ bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
 #set -g status-bg '#6d207a'
 #set -g status-bg '#02594b'
 set -g status-bg '#035447'
-set -g status-fg white
+# set -g status-fg white
+set -g status-fg brightwhite
 #set -g status-fg '#93ccb2'
 #set-window-option -g window-status-current-bg red
 #set-window-option -g window-status-current-style bg=red
@@ -74,6 +75,8 @@ set-window-option -g mode-keys vi
 #bind -n C-M-8 select-window -t 8
 #bind -n C-M-9 select-window -t 9
 
+
+unbind -n C-M-j 
 
 #bind -n C-M-h select-pane -L
 #bind -n C-M-j select-pane -D

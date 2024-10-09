@@ -34,6 +34,7 @@
 
 	location /hydro/_next/static {
 		alias /home/utylee/.virtualenvs/react/src/next-hydro/.next/static;
+		# alias /home/utylee/.virtualenvs/react/src/next-hydro/out/_next/static;
 	}
 
 	# nextjs.config 상에서 assetPrefix과 함께 basePath를 사용해봤는데
