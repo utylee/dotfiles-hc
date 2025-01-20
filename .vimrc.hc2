@@ -14,6 +14,7 @@ set nocompatible
 
 
 set background=dark
+let g:selenized_green_keywords=1
 colorscheme selenized
 
 
@@ -26,8 +27,8 @@ runtime macros/matchit.vim
 
 augroup remember_folds
   autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent! loadview
+  autocmd BufWinLeave ?* mkview
+  autocmd BufWinEnter ?* silent! loadview
 augroup END
 
 "이게 있으니 :term가 아니고 기본 sh 로 되어 ts.fish이 실행이 안됩니다
