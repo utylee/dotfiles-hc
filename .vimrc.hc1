@@ -290,7 +290,7 @@ function! StatusLine(current, width)
   endif
   let l:s .= ' %f%h%w%m%r '
   if a:current
-    let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+    " let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
   endif
 
   if a:current
@@ -324,8 +324,8 @@ let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
 "let g:crystalline_theme = 'default'
 "let g:crystalline_theme = 'molokai'
-" let g:crystalline_theme = 'onedark'
-let g:crystalline_theme = 'gruvbox'
+let g:crystalline_theme = 'onedark'
+" let g:crystalline_theme = 'gruvbox'
 
 set showtabline=2
 set guioptions-=e
@@ -517,8 +517,10 @@ nmap <leader>= :resize +5<cr>
 "colorscheme solarized 
 " colorscheme solarized_sd_utylee
 set background=dark
-let g:gruvbox_italic = 1
-colorscheme gruvbox
+" let g:gruvbox_italic = 1
+" colorscheme gruvbox
+let g:selenized_green_keywords=1
+colorscheme selenized
 
 
 
