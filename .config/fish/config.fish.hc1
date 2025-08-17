@@ -20,10 +20,14 @@ set -Ux fish_term24bit 1
 set -gx EDITOR /usr/bin/vi
 set -gx GHQ_ROOT /home/utylee/.ghq
 
+set -x LANG ko_KR.UTF-8
+set -x LANGUAGE ko_KR:ko
+set -x LC_ALL ko_KR.UTF-8
+
 # PATH
 #set CLANGHOME /usr/local/clang-14-dev
 set CLANGHOME /usr/local/clang+llvm-12.0.1-armv7a-linux-gnueabihf
-set -l NODEHOME /usr/local/node-v16.13.0-linux-armv7l
+set -l NODEHOME /usr/local/node-v22.18.0-linux-armv7l
 set -x PATH $CLANGHOME/bin $PATH
 set -x PATH $HOME/.go/bin /usr/local/go1.17.3/bin $NODEHOME/bin $PATH
 set -gx CC $CLANGHOME/bin/clang
