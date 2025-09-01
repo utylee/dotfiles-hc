@@ -12,7 +12,7 @@
     "blocklist-url": "http://www.example.com/blocklist",
     "cache-size-mb": 4,
     "dht-enabled": true,
-    "download-dir": "/home/utylee/media/4002/00-MediaWorld-4002",
+    "download-dir": "/home/utylee/media/8001",
     "download-limit": 1000,
     "download-limit-enabled": 0,
     "download-queue-enabled": true,
@@ -70,6 +70,6 @@
     "upload-limit-enabled": 0,
     "upload-slots-per-torrent": 14,
     "utp-enabled": true,
-    "watch-dir": "/home/utylee/media/4001/99-data/91-transmission-watch/",
+    "watch-dir": "/home/utylee/media/8001/99-data/91-transmission-watch/",
     "watch-dir-enabled": true
 }
