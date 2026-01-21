@@ -1,5 +1,7 @@
 [📦 WireGuard 서버 복원 매뉴얼]
 
+근데 설정해놓은 줄 모르고 hc1에다가 새롭게 다시 설치함 ㅠ 아래가 맞는지 모르겠네
+
 🖥 대상 시스템: Odroid HC2 (Ubuntu 기반)
 📂 백업 구성: wg 설정, iptables 스크립트, systemd 서비스 등
 
