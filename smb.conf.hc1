@@ -31,6 +31,13 @@
 # server string is the equivalent of the NT Description field
    server string = %h server (Samba, Ubuntu)
 
+# for macOS tab complete
+   vfs objects = catia fruit streams_xattr
+   fruit:encoding = native
+   fruit:metadata = netatalk
+   fruit:resource = file
+   fruit:locking = netatalk
+
 #### Networking ####
 
 # The specific set of interfaces / networks to bind to
@@ -268,3 +275,20 @@ directory mask = 0777
 writable = yes
 write list = utylee
 
+[_share_mac]
+valid users = utylee
+comment = full disk man of steel clark
+path = /home/utylee/media/_share_mac
+create mask = 0777
+directory mask = 0777
+writable = yes
+write list = utylee
+
+[_share_mac2]
+valid users = utylee
+comment = full disk man of steel clark
+path = /home/utylee/media/_share_mac2
+create mask = 0777
+directory mask = 0777
+writable = yes
+write list = utylee

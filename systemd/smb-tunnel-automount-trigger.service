@@ -1,0 +1,14 @@
+[Unit]
+Description=Trigger CIFS automounts once ssh reverse-tunnel ports are up
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/utylee/temp/bin/smb-tunnel-automount-trigger.sh
+; ExecStart=/usr/local/sbin/smb-tunnel-automount-trigger
+# optional: increase wait time if your autossh sometimes takes longer
+Environment=WAIT_SEC=120
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Trigger CIFS automounts (2 attempts after boot)
+
+[Timer]
+OnBootSec=30
+OnBootSec=90
+Unit=smb-tunnel-automount-trigger.service
+Persistent=false
+
+[Install]
+WantedBy=timers.target

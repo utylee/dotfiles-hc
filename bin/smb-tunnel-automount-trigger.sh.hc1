@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ports that should be listening locally on HC
+PORTS=(1445 1446)
+
+# mount points (must match your fstab paths)
+MPS=(
+  "/home/utylee/media/_share_mac"
+  "/home/utylee/media/_share_mac2"
+)
+
+# systemd unit names (derived from mountpoint path)
+MOUNT_UNITS=(
+  "home-utylee-media-_share_mac.mount"
+  "home-utylee-media-_share_mac2.mount"
+)
+
+AUTOMOUNT_UNITS=(
+  "home-utylee-media-_share_mac.automount"
+  "home-utylee-media-_share_mac2.automount"
+)
+
+# Wait up to N seconds for ports to be LISTEN
+WAIT_SEC="${WAIT_SEC:-90}"
+
+is_listening() {
+  local p="$1"
+  ss -lnt "( sport = :$p )" 2>/dev/null | grep -q LISTEN
+}
+
+echo "[smb-trigger] waiting for local tunnel ports: ${PORTS[*]} (timeout ${WAIT_SEC}s)"
+end=$((SECONDS + WAIT_SEC))
+while (( SECONDS < end )); do
+  ok=1
+  for p in "${PORTS[@]}"; do
+    if ! is_listening "$p"; then ok=0; break; fi
+  done
+  if (( ok == 1 )); then
+    echo "[smb-trigger] ports ready"
+    break
+  fi
+  sleep 2
+done
+
+# Even if ports aren't ready, we still attempt trigger (best-effort)
+# but we do reset-failed first to recover from earlier race failures.
+for u in "${MOUNT_UNITS[@]}"; do
+  systemctl reset-failed "$u" 2>/dev/null || true
+done
+
+# Ensure automount units are enabled/started (idempotent)
+for u in "${AUTOMOUNT_UNITS[@]}"; do
+  systemctl start "$u" 2>/dev/null || true
+done
+
+# Trigger automount by accessing mountpoints
+for mp in "${MPS[@]}"; do
+  mkdir -p "$mp"
+  echo "[smb-trigger] trigger: $mp"
+  ls -la "$mp" >/dev/null 2>&1 || true
+done
+
+# Print quick status for logs
+for u in "${MOUNT_UNITS[@]}"; do
+  state="$(systemctl show -p ActiveState --value "$u" 2>/dev/null || echo "unknown")"
+  sub="$(systemctl show -p SubState --value "$u" 2>/dev/null || echo "unknown")"
+  echo "[smb-trigger] $u => $state/$sub"
+done
+
+echo "[smb-trigger] done"
