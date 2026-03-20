@@ -13,6 +13,9 @@ UUID=1e61b894-3f05-46d4-9b2e-6940ce80953b /media/data ext4 defaults 0 2
 UUID=e099d6c5-cd17-4bec-80dd-aac4542cb5c7 /home/utylee/media/4001 ext4 defaults,nofail,x-systemd.device-timeout=18 0 0
 UUID=592a919c-7874-4ea1-90d4-e47aa26b0d60 /home/utylee/media/8001 ext4 defaults,nofail,x-systemd.device-timeout=18 0 0
 
+//127.0.0.1/_share_mac  /home/utylee/media/_share_mac  cifs port=1445,username=utylee,password=sksmsqnwk11,vers=3.0,uid=1000,gid=1000,file_mode=0644,dir_mode=0755,sec=ntlmssp,iocharset=utf8,serverino,nounix,_netdev,nofail,soft,x-systemd.automount,x-systemd.idle-timeout=300  0  0
 
+
+//127.0.0.1/_share_mac2  /home/utylee/media/_share_mac2  cifs port=1446,username=utylee,password=sksmsqnwk11,vers=3.0,uid=1000,gid=1000,file_mode=0644,dir_mode=0755,sec=ntlmssp,iocharset=utf8,serverino,nounix,_netdev,nofail,soft,x-systemd.automount,x-systemd.idle-timeout=300  0  0
 
 
