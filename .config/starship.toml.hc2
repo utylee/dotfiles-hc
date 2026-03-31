@@ -21,6 +21,7 @@ $python\
 $username\
 $directory\
 $git_branch$git_commit\
+$package$nodejs$rust$python
 $character\
 """
 #[HC2](bold fg:#6d207a)\
@@ -30,8 +31,8 @@ success_symbol = "[❯](bold #059980)"
 #error_symbol = "[✗](fg:1)"
 error_symbol = "[❯](fg:1)"
 #vicmd_symbol = "[N](fg:14 bold)"
-vicmd_symbol = "[\uE0B9](fg:15)"
-#vicmd_symbol = "[❮](bold #207dab)"
+# vicmd_symbol = "[\uE0B9](fg:15)"
+vicmd_symbol = "[❮](bold #207dab)"
 
 #format = """
 #$python\
